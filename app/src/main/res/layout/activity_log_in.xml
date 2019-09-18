@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LogIn">
+
+    <ImageView
+        android:id="@+id/login_image_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="50dp"
+        app:srcCompat="@drawable/Logo" />
+
+    <EditText
+        android:id="@+id/login_text_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft=""
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Email "
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/login_text_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft=""
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/login_button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/solid_button"
+        android:text="Log In"
+        android:textColor="#ffff"
+        android:textSize="24sp"
+        />
+
+</LinearLayout>
