@@ -35,7 +35,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             tools:ignore="Suspicious0dp"></LinearLayout>
 
@@ -67,12 +67,13 @@
                 >
 
                 <EditText
+                    android:id="@+id/signup_text_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
+        \
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -101,10 +102,80 @@
                 >
 
                 <EditText
+                    android:id="@+id/signup_text_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="4" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="6"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Password"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                >
+                <EditText
+                    android:id="@+id/signup_password_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    />
+                    android:ems="10"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="6"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Confirm Password"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                >
+                <EditText
+                    android:id="@+id/signup_password_confirmpassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:ems="10"
+                    android:inputType="textPassword" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -135,10 +206,10 @@
                 >
 
                 <EditText
+                    android:id="@+id/signup_text_bloodgroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -169,10 +240,10 @@
                 >
 
                 <EditText
+                    android:id="@+id/signup_text_dateofbirth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -203,10 +274,10 @@
                 >
 
                 <EditText
+                    android:id="@+id/singup_text_cellnumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -237,10 +308,10 @@
                 >
 
                 <EditText
+                    android:id="@+id/signup_text_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -271,15 +342,15 @@
                 >
 
                 <EditText
+                    android:id="@+id/signup_text_lastblooddonation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="0dp"
             android:layout_weight="2"
             >
         </LinearLayout>
