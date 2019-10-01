@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,8 +35,8 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         EditText nameF = (EditText) findViewById(R.id.signup_text_name);
-        EditText emailF = (EditText) findViewById(R.id.signup_text_email);
-        EditText passwordF = (EditText) findViewById(R.id.signup_password_password);
+        final EditText emailF = (EditText) findViewById(R.id.signup_text_email);
+        final EditText passwordF = (EditText) findViewById(R.id.signup_password_password);
         EditText confirmPasswordF = (EditText) findViewById(R.id.signup_password_confirmpassword);
         EditText bloodGroupF = (EditText) findViewById(R.id.signup_text_bloodgroup);
         EditText dateOfBirthF = (EditText) findViewById(R.id.signup_text_dateofbirth);
@@ -44,6 +45,15 @@ public class SignUp extends AppCompatActivity {
         EditText lastBloodDonationF = (EditText) findViewById(R.id.signup_text_lastblooddonation);
 
         mAuth = FirebaseAuth.getInstance();
+
+        findViewById(R.id.signup_button_signup).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signUp(emailF.getText().toString().trim(), passwordF.getText().toString().trim());
+            }
+        });
+
+        /* please */
 
     }
 
@@ -55,6 +65,7 @@ public class SignUp extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Log.d("DONATE+", "createUserWithEmail: successful");
                     FirebaseUser user = mAuth.getCurrentUser();
+                    Toast.makeText(SignUp.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Log.w("DONATE+", "createUserWithEmail: failure", task.getException());

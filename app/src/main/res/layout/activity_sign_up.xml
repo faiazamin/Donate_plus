@@ -371,7 +371,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 >
+
                 <Button
+                    android:id="@+id/signup_button_signup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
@@ -384,8 +386,5 @@
                 >
             </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
-
 </ScrollView>
