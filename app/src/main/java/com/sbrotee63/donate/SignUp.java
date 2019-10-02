@@ -3,6 +3,7 @@ package com.sbrotee63.donate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 
 public class SignUp extends AppCompatActivity {
 
@@ -62,7 +64,10 @@ public class SignUp extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Log.d("DONATE+", "createUserWithEmail: successful");
                     FirebaseUser user = mAuth.getCurrentUser();
+                    Intent intent = new Intent(SignUp.this,LogIn.class);
                     Toast.makeText(SignUp.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+
                 }
                 else{
                     Log.w("DONATE+", "createUserWithEmail: failure", task.getException());
@@ -77,7 +82,6 @@ public class SignUp extends AppCompatActivity {
     {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
     }
      */
 
