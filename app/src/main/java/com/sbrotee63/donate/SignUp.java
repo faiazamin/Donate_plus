@@ -52,9 +52,6 @@ public class SignUp extends AppCompatActivity {
                 signUp(emailF.getText().toString().trim(), passwordF.getText().toString().trim());
             }
         });
-
-        /* please */
-
     }
 
     private void signUp(String email, String password){

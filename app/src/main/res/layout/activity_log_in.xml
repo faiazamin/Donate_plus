@@ -13,14 +13,13 @@
         android:layout_height="180dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="50dp"
-        app:srcCompat="@drawable/Logo" />
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/login_text_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft=""
         android:layout_marginBottom="25dp"
         android:ems="10"
         android:gravity="center_horizontal"
@@ -29,16 +28,15 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/login_text_password"
+        android:id="@+id/login_password_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft=""
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="25dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textSize="24sp" />
 
     <Button
