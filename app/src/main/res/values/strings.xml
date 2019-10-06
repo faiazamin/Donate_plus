@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Donate+</string>
+    <string name="map_key">AIzaSyAY5l6-B0V6TGUByLYzW7sHKdoSEEC1iv4</string>
     <string name="eventpost_textview_postinfo">Post Info</string>
     <string name="eventpost_textview_postform">Fill It Up!</string>
     <string name="eventpost_textview_name">Name:</string>
