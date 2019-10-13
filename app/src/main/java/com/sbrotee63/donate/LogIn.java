@@ -3,6 +3,7 @@ package com.sbrotee63.donate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,8 @@ public class LogIn extends AppCompatActivity {
                     Log.d("Donate+", "LogInWithEmail: Success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     Toast.makeText(LogIn.this, "Log In Successful.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogIn.this, NewsFeed.class);
+                    startActivity(intent);
                 }
                 else
                 {
