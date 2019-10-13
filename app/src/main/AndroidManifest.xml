@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.PLACES" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostInformation"></activity>
+        <activity android:name=".PostInformation"/>
         <activity android:name=".EventPost" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Set_Location_Activity">
@@ -23,7 +24,7 @@
                 android:value="@integer/google_play_services_version" />
             <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="@string/map_key" />
+                android:value="AIzaSyApV1qg-hE67NiraT7LnlOR-jiBcfjVTGM" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
