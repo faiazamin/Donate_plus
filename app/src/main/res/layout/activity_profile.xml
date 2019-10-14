@@ -85,7 +85,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="Name" />
+                    android:text="Name"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -123,7 +124,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="E-mail" />
+                    android:text="E-mail"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -162,7 +164,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="Blood Group" />
+                    android:text="Blood Group"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -201,7 +204,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="Date of Birth" />
+                    android:text="Date of Birth"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -240,7 +244,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="Cell Number" />
+                    android:text="Cell Number"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -279,7 +284,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="Address" />
+                    android:text="Address"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -316,9 +322,10 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/solid_button"
-                    android:text="Last Blood Donation" />
+                    android:text="Last Blood Donation"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -333,6 +340,29 @@
                     android:layout_weight="4"
                     />
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            tools:ignore="Suspicious0dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="6"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/solid_button"
+                android:text="See Your Posts"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
