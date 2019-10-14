@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Settings">
+    tools:context=".HospitalAndBloodBank">
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -38,15 +38,14 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
+            android:background="@color/green"
             android:src="@drawable/icon_hobb"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:background="@color/green"
             android:src="@drawable/icon_setting"/>
 
     </LinearLayout>
-
 </LinearLayout>

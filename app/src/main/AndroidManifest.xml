@@ -9,19 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Welcome"></activity>
-        <activity android:name=".Settings" />
-        <activity android:name=".Notifications" />
-        <activity android:name=".NewsFeed" />
-        <activity android:name=".Profile" />
-        <activity android:name=".LogIn" />
-        <activity android:name=".SignUp">
+        <activity android:name=".MyPosts"></activity>
+        <activity android:name=".HospitalAndBloodBank" />
+        <activity android:name=".Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Notifications" />
+        <activity android:name=".NewsFeed" />
+        <activity android:name=".Profile" />
+        <activity android:name=".LogIn" />
+        <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
     </application>
 
