@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostDescription"
+    tools:context=".PostNewEvent"
 
     android:fillViewport="true"
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="20"
+        android:weightSum="16"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,13 +28,13 @@
             android:layout_gravity="center"
             >
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/solid_btn_red"
-                android:text="@string/postdescription_textview_postinfo"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp" />
+                android:text="@string/postdescription_textview_postform"
+                android:textColor="@color/green"
+                android:textSize="28dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,17 +51,16 @@
             >
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:text="@string/postdescription_textview_name"
-                    android:textColor="#FFFFFF" />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -70,19 +69,13 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -92,17 +85,16 @@
             >
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:text="@string/postdescription_textview_bloodgroup"
-                    android:textColor="#FFFFFF" />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -111,19 +103,13 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -138,12 +124,11 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:text="@string/postdescription_textview_location"
-                    android:textColor="#FFFFFF" />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -152,19 +137,13 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -179,12 +158,11 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:text="@string/postdescription_textview_phone"
-                    android:textColor="#FFFFFF" />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -193,19 +171,13 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -220,12 +192,11 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:text="@string/postdescription_textview_dob"
-                    android:textColor="#FFFFFF" />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -234,19 +205,13 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -261,12 +226,11 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:text="@string/postdescription_textview_disease"
-                    android:textColor="#FFFFFF" />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -275,10 +239,9 @@
                 android:layout_gravity="center"
                 >
 
-                <Button
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
                     />
             </LinearLayout>
@@ -298,7 +261,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                ></LinearLayout>
+                >
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -309,12 +273,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
-                    android:text="@string/postdescription_button_accept"
-                    android:textColor="#FFFFFF" />
+                    android:text="@string/postdescription_button_post"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
             </LinearLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>
