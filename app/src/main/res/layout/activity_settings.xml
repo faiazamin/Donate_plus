@@ -15,37 +15,36 @@
         android:background="#B2BEB5"
         android:layout_margin="10dp">
 
-        <ImageView
-            android:layout_height="60dp"
-            android:layout_weight="1"
+        <Button
             android:id="@+id/feed_button_feed"
-            android:src="@drawable/icon_feed"
-            android:layout_width="0dp" />
-
-        <ImageView
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:src="@drawable/icon_profile"/>
+            android:background="@drawable/icon_feed" />
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:src="@drawable/icon_notification"/>
+            android:background="@drawable/icon_profile"/>
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:src="@drawable/icon_hobb"/>
+            android:background="@drawable/icon_notification"/>
 
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:background="@color/green"
-            android:src="@drawable/icon_setting"/>
+            android:background="@drawable/icon_hobb"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/icon_setting_green"/>
 
     </LinearLayout>
 
