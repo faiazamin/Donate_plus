@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventPost"
+    tools:context=".NewsFeed"
+    android:orientation="vertical">
 
-    android:fillViewport="true"
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:background="#B2BEB5"
+        android:layout_margin="10dp">
 
+        <ImageView
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:id="@+id/feed_button_feed"
+            android:src="@drawable/icon_feed"
+            android:layout_width="0dp" />
 
->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/icon_profile"
+            android:background="@color/green"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/icon_notification"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/icon_hobb"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/icon_setting"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="16"
+        android:weightSum="20"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             ></LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="28dp"
-                android:text="@string/eventpost_textview_postform"
-                />
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -54,10 +81,12 @@
                 android:layout_gravity="center"
                 >
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/eventpost_textview_name" />
+                    android:background="@drawable/solid_button"
+                    android:text="Name"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -66,13 +95,17 @@
                 android:layout_gravity="center"
                 >
 
-                <EditText
+                <Button
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -87,10 +120,12 @@
                 android:layout_gravity="center"
                 >
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/eventpost_textview_bloodgrp" />
+                    android:background="@drawable/solid_button"
+                    android:text="E-mail"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -99,13 +134,18 @@
                 android:layout_gravity="center"
                 >
 
-                <EditText
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -120,10 +160,12 @@
                 android:layout_gravity="center"
                 >
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/eventpost_textview_location" />
+                    android:background="@drawable/solid_button"
+                    android:text="Blood Group"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -132,13 +174,18 @@
                 android:layout_gravity="center"
                 >
 
-                <EditText
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -153,10 +200,12 @@
                 android:layout_gravity="center"
                 >
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/eventpost_textview_phone" />
+                    android:background="@drawable/solid_button"
+                    android:text="Date of Birth"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -165,13 +214,18 @@
                 android:layout_gravity="center"
                 >
 
-                <EditText
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -186,10 +240,12 @@
                 android:layout_gravity="center"
                 >
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/eventpost_textview_age" />
+                    android:background="@drawable/solid_button"
+                    android:text="Cell Number"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -198,13 +254,18 @@
                 android:layout_gravity="center"
                 >
 
-                <EditText
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     />
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -219,10 +280,12 @@
                 android:layout_gravity="center"
                 >
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/eventpost_textview_diseas" />
+                    android:background="@drawable/solid_button"
+                    android:text="Address"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -231,7 +294,47 @@
                 android:layout_gravity="center"
                 >
 
-                <EditText
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:weightSum="6"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/solid_button"
+                    android:text="Last Blood Donation"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                >
+
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -242,42 +345,24 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            ></LinearLayout>
+            tools:ignore="Suspicious0dp"></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:weightSum="6"
             android:orientation="horizontal"
-            android:weightSum="3">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn"
-                    android:text="@string/eventpost_button_post"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                ></LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_green"
-                    android:text="@string/eventpost_button_back"/>
-            </LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/solid_button"
+                android:text="See Your Posts"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
         </LinearLayout>
-
-
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

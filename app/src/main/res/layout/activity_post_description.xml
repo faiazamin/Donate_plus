@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostInformation"
+    tools:context=".PostDescription"
 
     android:fillViewport="true"
 
@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_margin="10dp"
         android:weightSum="20"
         >
         <LinearLayout
@@ -27,18 +28,19 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             >
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:background="@drawable/solid_btn_red"
-                android:text="@string/eventpost_textview_postinfo"
-                />
+                android:text="@string/postdescription_textview_postinfo"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             tools:ignore="Suspicious0dp"></LinearLayout>
 
         <LinearLayout
@@ -59,7 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
-                    android:text="@string/eventpost_textview_name" />
+                    android:text="@string/postdescription_textview_name"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -99,47 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
-                    android:text="@string/eventpost_textview_bloodgrp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:layout_gravity="center"
-                >
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_red"
-                    android:layout_weight="4"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            tools:ignore="Suspicious0dp"></LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:weightSum="6"
-            android:orientation="horizontal"
-            >
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_gravity="center"
-                >
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                android:background="@drawable/solid_btn_red"
-                    android:text="@string/eventpost_textview_location" />
+                    android:text="@string/postdescription_textview_bloodgroup"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -179,7 +143,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
-                    android:text="@string/eventpost_textview_phone" />
+                    android:text="@string/postdescription_textview_location"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -219,7 +184,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
-                    android:text="@string/eventpost_textview_age" />
+                    android:text="@string/postdescription_textview_phone"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -259,7 +225,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
-                    android:text="@string/eventpost_textview_diseas" />
+                    android:text="@string/postdescription_textview_dob"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/solid_btn_red"
+                    android:layout_weight="4"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="6"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/solid_btn_red"
+                    android:text="@string/postdescription_textview_disease"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -291,29 +299,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                >
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn"
-                    android:text="@string/postinfo_button_accept"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
                 ></LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 >
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/solid_btn_green"
-                    android:text="@string/eventpost_button_back"/>
+                    android:background="@drawable/solid_button"
+                    android:text="@string/postdescription_button_accept"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
+
         </LinearLayout>
 
 
