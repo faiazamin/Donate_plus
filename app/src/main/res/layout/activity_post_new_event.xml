@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_margin="10dp"
         android:weightSum="16"
         >
         <LinearLayout
@@ -31,8 +32,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/green"
                 android:text="@string/postdescription_textview_postform"
-                android:textColor="@color/green"
+                android:textColor="#FFFFFF"
                 android:textSize="28dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -59,7 +61,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/green"
                     android:text="@string/postdescription_textview_name"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
@@ -93,7 +97,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/green"
                     android:text="@string/postdescription_textview_bloodgroup"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
@@ -119,7 +125,7 @@
             >
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 >
@@ -127,7 +133,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/green"
                     android:text="@string/postdescription_textview_location"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
@@ -153,7 +161,7 @@
             >
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 >
@@ -161,7 +169,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/green"
                     android:text="@string/postdescription_textview_phone"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
@@ -187,7 +197,7 @@
             >
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 >
@@ -195,12 +205,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/green"
                     android:text="@string/postdescription_textview_dob"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:layout_gravity="center"
                 >
@@ -221,7 +233,7 @@
             >
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 >
@@ -229,12 +241,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/green"
                     android:text="@string/postdescription_textview_disease"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:layout_gravity="center"
                 >
