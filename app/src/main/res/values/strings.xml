@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Donate+</string>
+    <string name="postdescription_textview_postinfo">Post Info</string>
+    <string name="postdescription_textview_postform">Fill It Up!</string>
+    <string name="postdescription_textview_name">Name:</string>
+    <string name="postdescription_textview_bloodgrp">Blood Group:</string>
+    <string name="postdescription_textview_location">Location:</string>
+    <string name="postdescription_textview_phone">Phone:</string>
+    <string name="postdescription_textview_age">Age:</string>
+    <string name="postdescription_textview_disease">Disease:</string>
+    <string name="postdescription_button_back">Back</string>
+    <string name="postdescription_button_post">Post</string>
+    <string name="postdescription_button_accept">Accept</string>
+    <string name="title_activity_post_info">post_info</string>
 </resources>
