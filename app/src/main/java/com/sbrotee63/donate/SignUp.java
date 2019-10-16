@@ -78,7 +78,7 @@ public class SignUp extends AppCompatActivity {
                     Log.d("DONATE+", "createUserWithEmail: successful");
                     FirebaseUser user = mAuth.getCurrentUser();
                     Toast.makeText(SignUp.this, "Sign up successful.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUp.this, LogIn.class);
+                    Intent intent = new Intent(SignUp.this, NewsFeed.class);
                     startActivity(intent);
 
                 }
