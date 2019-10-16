@@ -401,7 +401,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_button"
                     android:text="SIGN UP"
-                    android:textColor="#FF0000"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
