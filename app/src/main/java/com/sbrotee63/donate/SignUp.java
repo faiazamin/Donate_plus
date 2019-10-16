@@ -29,16 +29,6 @@ public class SignUp extends AppCompatActivity {
     String cellNumber;
     String lastBloodDonation;
 
-    /*final EditText nameF;
-    final EditText emailF;
-    final EditText passwordF;
-    final EditText confirmPasswordF = (EditText) findViewById(R.id.signup_password_confirmpassword);
-    final EditText bloodGroupF = (EditText) findViewById(R.id.signup_text_bloodgroup);
-    final EditText dateOfBirthF = (EditText) findViewById(R.id.signup_text_dateofbirth);
-    final EditText addressF = (EditText) findViewById(R.id.signup_text_address);
-    final EditText cellNumberF = (EditText) findViewById(R.id.singup_text_cellnumber);
-    final EditText lastBloodDonationF = (EditText) findViewById(R.id.signup_text_lastblooddonation);*/
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -68,8 +58,8 @@ public class SignUp extends AppCompatActivity {
 
     private void signUp(){
         if(!allFieldChecked()) return;
-        String email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString();
-        String password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString();
+        String email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
+        String password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
         {
             public void onComplete(@NonNull Task <AuthResult> task)
@@ -92,15 +82,15 @@ public class SignUp extends AppCompatActivity {
 
     private Boolean allFieldChecked(){
         Log.d("newTag", "Came");
-        name = ((EditText)findViewById(R.id.signup_text_name)).getText().toString();
-        email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString();
-        password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString();
-        confirmPassword = ((EditText)findViewById(R.id.signup_password_confirmpassword)).getText().toString();
-        bloodGroup = ((EditText)findViewById(R.id.signup_text_bloodgroup)).getText().toString();
-        dateOfBirth = ((EditText)findViewById(R.id.signup_text_dateofbirth)).getText().toString();
-        address = ((EditText)findViewById(R.id.signup_text_address)).getText().toString();
-        cellNumber = ((EditText)findViewById(R.id.singup_text_cellnumber)).getText().toString();
-        lastBloodDonation = ((EditText)findViewById(R.id.signup_text_lastblooddonation)).getText().toString();
+        name = ((EditText)findViewById(R.id.signup_text_name)).getText().toString().trim();
+        email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
+        password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
+        confirmPassword = ((EditText)findViewById(R.id.signup_password_confirmpassword)).getText().toString().trim();
+        bloodGroup = ((EditText)findViewById(R.id.signup_text_bloodgroup)).getText().toString().trim();
+        dateOfBirth = ((EditText)findViewById(R.id.signup_text_dateofbirth)).getText().toString().trim();
+        address = ((EditText)findViewById(R.id.signup_text_address)).getText().toString().trim();
+        cellNumber = ((EditText)findViewById(R.id.singup_text_cellnumber)).getText().toString().trim();
+        lastBloodDonation = ((EditText)findViewById(R.id.signup_text_lastblooddonation)).getText().toString().trim();
 
         if(name.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("") || bloodGroup.equals("") || dateOfBirth.equals("") || address.equals("") || cellNumber.equals("") || lastBloodDonation.equals("")){
             Toast.makeText(SignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
