@@ -31,7 +31,6 @@ public class SignUp extends AppCompatActivity {
     String lastBloodDonation;
 
     private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +57,13 @@ public class SignUp extends AppCompatActivity {
             {
                 if(task.isSuccessful()){
                     Log.d("DONATE+", "createUserWithEmail: successful");
+
                     FirebaseUser user = mAuth.getCurrentUser();
                     String uid = user.getUid();
+                    User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
 
-//                    database.getReference().setValue();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    database.getReference("user/info/" + uid).setValue( userObj );
 
                     Toast.makeText(SignUp.this, "Sign up successful.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUp.this, NewsFeed.class);
