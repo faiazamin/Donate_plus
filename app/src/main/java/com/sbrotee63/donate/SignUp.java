@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class SignUp extends AppCompatActivity {
@@ -30,23 +31,14 @@ public class SignUp extends AppCompatActivity {
     String lastBloodDonation;
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-        /*nameF = (EditText) findViewById(R.id.signup_text_name);
-        emailF = (EditText) findViewById(R.id.signup_text_email);
-        passwordF = (EditText) findViewById(R.id.signup_password_password);
-        final EditText confirmPasswordF = (EditText) findViewById(R.id.signup_password_confirmpassword);
-        final EditText bloodGroupF = (EditText) findViewById(R.id.signup_text_bloodgroup);
-        final EditText dateOfBirthF = (EditText) findViewById(R.id.signup_text_dateofbirth);
-        final EditText addressF = (EditText) findViewById(R.id.signup_text_address);
-        final EditText cellNumberF = (EditText) findViewById(R.id.singup_text_cellnumber);
-        final EditText lastBloodDonationF = (EditText) findViewById(R.id.signup_text_lastblooddonation);*/
-
         mAuth = FirebaseAuth.getInstance();
+
 
         findViewById(R.id.signup_button_signup).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +59,10 @@ public class SignUp extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Log.d("DONATE+", "createUserWithEmail: successful");
                     FirebaseUser user = mAuth.getCurrentUser();
+                    String uid = user.getUid();
+
+//                    database.getReference().setValue();
+
                     Toast.makeText(SignUp.this, "Sign up successful.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUp.this, NewsFeed.class);
                     startActivity(intent);
@@ -103,13 +99,5 @@ public class SignUp extends AppCompatActivity {
         }
         return true;
     }
-
-    /*
-    public void onStart()
-    {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-    }
-     */
 
 }
