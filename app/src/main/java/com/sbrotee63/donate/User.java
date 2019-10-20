@@ -10,6 +10,10 @@ public class User {
     public String lastBloodDonation;
     public String visibility;
 
+    User(){
+
+    }
+
     User(String name, String email, String bloodGroup, String dateOfBirth, String address, String cellNo, String lastBloodDonation){
         this.name = name;
         this.email = email;
