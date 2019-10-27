@@ -56,19 +56,27 @@ public class SignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task <AuthResult> task)
             {
                 if(task.isSuccessful()){
-                    Log.d("DONATE+", "createUserWithEmail: successful");
 
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String uid = user.getUid();
-                    User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
-
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    database.getReference("user/info/" + uid).setValue( userObj );
-
-                    Toast.makeText(SignUp.this, "Sign up successful.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUp.this, NewsFeed.class);
-                    startActivity(intent);
-
+                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(SignUp.this, "Email has been sent to this address. Please verify your email", Toast.LENGTH_LONG).show();
+                                Log.d("DONATE+", "createUserWithEmail: successful");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                String uid = user.getUid();
+                                User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                database.getReference("user/info/" + uid).setValue( userObj );
+                                Intent intent = new Intent(SignUp.this, LogIn.class);
+                                startActivity(intent);
+                                // TODO : clear all area
+                            }
+                            else{
+                                Toast.makeText(SignUp.this, "Error : Please try again", Toast.LENGTH_SHORT);
+                            }
+                        }
+                    });
                 }
                 else{
                     Log.w("DONATE+", "createUserWithEmail: failure", task.getException());
