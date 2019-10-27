@@ -24,6 +24,7 @@ public class NewsFeed extends AppCompatActivity {
 
     private ArrayList<String> bloodGroups = new ArrayList<>();
     private ArrayList<String> locations = new ArrayList<>();
+    private ArrayList<String> postId = new ArrayList<>();
 
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
@@ -48,6 +49,7 @@ public class NewsFeed extends AppCompatActivity {
         });
 
         Button profileButton = (Button) findViewById(R.id.feed_button_profile);
+
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +67,8 @@ public class NewsFeed extends AppCompatActivity {
                     Post post = postSnapShot.getValue(Post.class);
                     bloodGroups.add(post.bloodGroup);
                     locations.add(post.location);
+                    postId.add(post.postId);
+                    Log.d("newTag", post.postId);
                 }
                 initRecyclerView();
             }
@@ -81,7 +85,7 @@ public class NewsFeed extends AppCompatActivity {
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, bloodGroups, locations);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, bloodGroups, locations, postId);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

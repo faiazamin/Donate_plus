@@ -20,12 +20,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<String> bloodGroups = new ArrayList<>();
     private ArrayList<String> locations = new ArrayList<>();
+    private ArrayList<String> postId = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> aBloodGroups, ArrayList<String> aLocations ) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> aBloodGroups, ArrayList<String> aLocations, ArrayList<String> postId) {
         bloodGroups = aBloodGroups;
         locations = aLocations;
         mContext = context;
+        this.postId = postId;
     }
 
     @Override
@@ -50,6 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Toast.makeText(mContext, bloodGroups.get(position), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, PostDescription.class);
+                intent.putExtra("postId",postId.get(position));
                 intent.putExtra("blood_group", bloodGroups.get(position));
                 intent.putExtra("location", locations.get(position));
                 mContext.startActivity(intent);

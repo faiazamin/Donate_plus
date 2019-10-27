@@ -1,5 +1,6 @@
 package com.sbrotee63.donate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +12,10 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class PostNewEvent extends AppCompatActivity {
 
@@ -41,7 +45,22 @@ public class PostNewEvent extends AppCompatActivity {
                     Toast.makeText(PostNewEvent.this, "Please fill all the values", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                database.getReference("post/posts").push().setValue(post);
+                final Integer[] currentPost = {0};
+                ValueEventListener valueEventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        currentPost[0] = dataSnapshot.getValue(Integer.class);
+                        database.getReference("post/currentPost").setValue(currentPost[0] + 1);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                };
+                database.getReference("post/currentPost").addListenerForSingleValueEvent(valueEventListener);
+                post.postId = Integer.toString(currentPost[0]);
+                database.getReference("post/posts/" + post.postId).setValue(post);
                 Toast.makeText(PostNewEvent.this, "Request posted", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);
                 startActivity(intent);

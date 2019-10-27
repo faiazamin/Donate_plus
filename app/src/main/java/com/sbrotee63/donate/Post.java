@@ -8,6 +8,7 @@ public class Post {
     public String dateOfBirth;
     public String cellno;
     public String seekerId;
+    public String postId;
     Boolean visibility;
 
     Post(){
