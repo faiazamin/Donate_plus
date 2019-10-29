@@ -20,11 +20,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<String> bloodGroups = new ArrayList<>();
     private ArrayList<String> locations = new ArrayList<>();
+    private ArrayList<String> statuses = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> aBloodGroups, ArrayList<String> aLocations ) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> aBloodGroups, ArrayList<String> aLocations, ArrayList<String> aStatuses ) {
         bloodGroups = aBloodGroups;
         locations = aLocations;
+        statuses = aStatuses;
         mContext = context;
     }
 
@@ -41,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.bloodGroup.setText(bloodGroups.get(position));
         holder.location.setText(locations.get(position));
+        holder.status.setText(statuses.get(position));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, PostDescription.class);
                 intent.putExtra("blood_group", bloodGroups.get(position));
                 intent.putExtra("location", locations.get(position));
+                intent.putExtra("status", statuses.get(position));
                 mContext.startActivity(intent);
             }
         });
@@ -70,12 +74,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         TextView bloodGroup;
         TextView location;
+        TextView status;
         LinearLayout parentLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             bloodGroup = itemView.findViewById(R.id.feed_text_blood);
             location = itemView.findViewById(R.id.feed_text_location);
+            status = itemView.findViewById(R.id.feed_text_status);
 
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }

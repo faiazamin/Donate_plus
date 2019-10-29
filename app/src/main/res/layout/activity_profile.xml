@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF9C2"
     tools:context=".NewsFeed"
     android:orientation="vertical">
 
@@ -12,7 +13,6 @@
         android:layout_width="match_parent"
         android:weightSum="5"
         android:orientation="horizontal"
-        android:background="#B2BEB5"
         android:layout_margin="10dp">
 
         <Button
@@ -101,7 +101,6 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/profile_name"
                         android:layout_weight="4" />
                 </LinearLayout>
             </LinearLayout>
@@ -142,7 +141,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:id="@+id/profile_email"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -182,7 +180,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:id="@+id/profile_bloodgroup"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -222,7 +219,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:id="@+id/profile_dateofbirth"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -262,7 +258,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:id="@+id/profile_cellno"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -302,7 +297,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:id="@+id/profile_address"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -342,7 +336,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:id="@+id/profile_lastblooddonation"
                         />
                 </LinearLayout>
             </LinearLayout>

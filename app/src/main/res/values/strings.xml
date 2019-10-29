@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Donate+</string>
     <string name="postdescription_textview_postinfo">Post Info</string>
-    <string name="postdescription_textview_postform">Fill It Up!</string>
+    <string name="postdescription_textview_postform">Please fill up the following form to request your search for the appropriate blood donor.</string>
     <string name="postdescription_textview_name">Name</string>
     <string name="postdescription_textview_bloodgroup">Blood Group</string>
     <string name="postdescription_textview_location">Location</string>
