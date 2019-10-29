@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF9C2"
     android:orientation="vertical"
     tools:context=".MyPosts">
 
@@ -12,7 +13,6 @@
         android:layout_width="match_parent"
         android:weightSum="5"
         android:orientation="horizontal"
-        android:background="#B2BEB5"
         android:layout_margin="10dp">
 
         <Button
