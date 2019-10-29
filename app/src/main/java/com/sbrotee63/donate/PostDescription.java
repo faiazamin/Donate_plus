@@ -36,7 +36,7 @@ public class PostDescription extends AppCompatActivity {
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.getReference("post/response/" + postId).setValue(user.getUid());
+                database.getReference("post/response/" + postId).push().setValue(user.getUid());
             }
         });;
 
