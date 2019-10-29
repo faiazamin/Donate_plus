@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF9C2"
     tools:context=".SignUp">
 
     <LinearLayout
@@ -49,7 +50,8 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
@@ -57,7 +59,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Name"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -86,15 +90,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="E-mail"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -123,15 +131,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Password"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -161,15 +173,18 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Confirm Password"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -199,15 +214,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Blood Group"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -235,15 +254,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Date of Birth"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -258,7 +281,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:ems="10"
+                    android:inputType="date" />
             </LinearLayout>
         </LinearLayout>
 
@@ -272,15 +297,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Cell Number"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -308,15 +337,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Address"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -344,15 +377,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/textview_border"
                     android:text="Last Blood Donation"
+                    android:gravity="center"
                     android:textSize="18sp"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -366,7 +403,6 @@
                     android:id="@+id/signup_text_lastblooddonation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="20dp"
                     android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>

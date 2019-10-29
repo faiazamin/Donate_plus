@@ -14,6 +14,7 @@ public class NewsFeed extends AppCompatActivity {
 
     private ArrayList<String> bloodGroups = new ArrayList<>();
     private ArrayList<String> locations = new ArrayList<>();
+    private ArrayList<String> statuses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +31,27 @@ public class NewsFeed extends AppCompatActivity {
 
         bloodGroups.add("A+");
         locations.add("Dhaka");
+        statuses.add("Urgent");
 
         bloodGroups.add("A+");
         locations.add("Dhaka");
+        statuses.add("Urgent");
 
         bloodGroups.add("A+");
         locations.add("Dhaka");
+        statuses.add("Urgent");
 
         bloodGroups.add("A+");
         locations.add("Dhaka");
+        statuses.add("Urgent");
 
         bloodGroups.add("A+");
         locations.add("Dhaka");
+        statuses.add("Urgent");
 
         bloodGroups.add("O+");
         locations.add("Sylhet");
+        statuses.add("Urgent");
 
         initRecyclerView();
     }
@@ -52,7 +59,7 @@ public class NewsFeed extends AppCompatActivity {
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, bloodGroups, locations);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, bloodGroups, locations, statuses);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
