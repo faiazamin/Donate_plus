@@ -1,5 +1,7 @@
 package com.sbrotee63.donate;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +18,11 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Welcome extends AppCompatActivity {
 
@@ -117,6 +124,51 @@ public class Welcome extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         Log.d("newTag", "name : " + mAuth.getUid());
         if(mAuth.getCurrentUser() != null){
+
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    NewsFeed.user = dataSnapshot.getValue(User.class);
+
+                    Log.d("newTag", "GOT HIM");
+
+                    ChildEventListener childEventListener = new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            String notification = dataSnapshot.getValue(String.class);
+                            FirebaseDatabase.getInstance().getReference("notification/" + mAuth.getCurrentUser().getUid()).push().setValue(notification);
+                        }
+
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    };
+                    FirebaseDatabase.getInstance().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            };
+            FirebaseDatabase.getInstance().getReference("user/info/" + mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
+
             Intent intent = new Intent(Welcome.this, NewsFeed.class);
             startActivity(intent);
         }

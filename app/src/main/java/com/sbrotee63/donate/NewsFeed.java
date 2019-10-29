@@ -1,5 +1,7 @@
 package com.sbrotee63.donate;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,10 +31,19 @@ public class NewsFeed extends AppCompatActivity {
     private ArrayList<String> locations = new ArrayList<>();
     private ArrayList<String> postId = new ArrayList<>();
 
+    static public User user;
+
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
     FirebaseDatabase database;
     boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        /**/
+    }
 
     @Override
     public void onBackPressed() {
@@ -60,9 +72,11 @@ public class NewsFeed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
 
+
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
+
 
 
 
@@ -140,10 +154,10 @@ public class NewsFeed extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w("newTag", "loadPost:onCancelled", databaseError.toException());
-
             }
         };
         database.getReference("post/posts").addValueEventListener(postListener);
+
     }
 
     private void initRecyclerView()
@@ -153,4 +167,5 @@ public class NewsFeed extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
 }

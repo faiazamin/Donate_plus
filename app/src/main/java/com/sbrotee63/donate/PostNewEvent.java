@@ -23,6 +23,8 @@ public class PostNewEvent extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
 
+    Post post;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class PostNewEvent extends AppCompatActivity {
         ((Button)findViewById(R.id.post_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Post post = new Post( ((EditText)findViewById(R.id.post_name)).getText().toString(),
+                post = new Post( ((EditText)findViewById(R.id.post_name)).getText().toString(),
                         ((EditText)findViewById(R.id.post_bloodgroup)).getText().toString(),
                         ((EditText)findViewById(R.id.post_location)).getText().toString(),
                         ((EditText)findViewById(R.id.post_dateofbirth)).getText().toString(),
@@ -51,6 +53,7 @@ public class PostNewEvent extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         currentPost[0] = dataSnapshot.getValue(Integer.class);
                         database.getReference("post/currentPost").setValue(currentPost[0] + 1);
+                        lastWork(currentPost[0]);
                     }
 
                     @Override
@@ -59,13 +62,17 @@ public class PostNewEvent extends AppCompatActivity {
                     }
                 };
                 database.getReference("post/currentPost").addListenerForSingleValueEvent(valueEventListener);
-                post.postId = Integer.toString(currentPost[0]);
-                database.getReference("post/posts/" + post.postId).setValue(post);
-                Toast.makeText(PostNewEvent.this, "Request posted", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);
-                startActivity(intent);
             }
         });
 
+    }
+
+    public  void lastWork(Integer cur){
+        post.postId = Integer.toString(cur);
+        database.getReference("post/posts/" + post.postId).setValue(post);
+        database.getReference("notification/" + post.bloodGroup).push().setValue("+"  + post.postId);
+        Toast.makeText(PostNewEvent.this, "Request posted", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);
+        startActivity(intent);
     }
 }

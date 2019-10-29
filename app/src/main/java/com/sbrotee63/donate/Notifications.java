@@ -53,5 +53,8 @@ public class Notifications extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 }
