@@ -21,6 +21,7 @@ public class LogIn extends AppCompatActivity {
     String email;
     String password;
 
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -37,6 +38,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logIn(emailF.getText().toString().trim(), passwordF.getText().toString().trim());
+
             }
         });
     }
@@ -65,5 +67,15 @@ public class LogIn extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth != null){
+            Intent intent = new Intent(LogIn.this, NewsFeed.class);
+            startActivity(intent);
+        }
     }
 }

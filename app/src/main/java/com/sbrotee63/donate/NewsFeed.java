@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +31,29 @@ public class NewsFeed extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
     FirebaseDatabase database;
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +64,8 @@ public class NewsFeed extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
 
+
+
         Button feedRequestButton = (Button) findViewById(R.id.feed_button_request);
         feedRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +74,21 @@ public class NewsFeed extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        // Navigation Buttons
+
+
+        Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, Settings.class);
+                startActivity(intent);
+            }
+        });
+
 
         Button profileButton = (Button) findViewById(R.id.feed_button_profile);
 
@@ -57,6 +99,28 @@ public class NewsFeed extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button notificationButton = (Button) findViewById(R.id.feed_button_notification);
+
+        notificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, Notifications.class);
+                startActivity(intent);
+            }
+        });
+
+        Button bloodBankButton = (Button) findViewById(R.id.feed_button_hospitals);
+
+        bloodBankButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, HospitalAndBloodBank.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override

@@ -21,19 +21,18 @@ public class Welcome extends AppCompatActivity {
 
     private static final int RC_SIGN_IN =0 ;
     public FirebaseAuth mAuth;
-    public FirebaseUser currentUser;
-    public GoogleSignInClient mGoogleSignInClient;
+    //public GoogleSignInClient mGoogleSignInClient;
 
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    /*GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
-            .build();
+            .build();*/
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        //mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         setContentView(R.layout.activity_welcome);
 
@@ -54,15 +53,15 @@ public class Welcome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn();
+                //signIn();
             }
-        });
+        });*/
 
     }
-    void signIn() {
+    /*void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -93,21 +92,33 @@ public class Welcome extends AppCompatActivity {
             Log.w("new tag", "signInResult:failed code=" + e.getStatusCode());
             Toast.makeText(Welcome.this, "Log In Failed.", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
-    public void onStart()
+    /* public void onStart()
     {
         super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth != null){
+            Intent intent = new Intent(Welcome.this, NewsFeed.class);
+            startActivity(intent);
+        }
         // Check for existing Google Sign In account, if the user is already signed in
 // the GoogleSignInAccount will be non-null.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
         currentUser = mAuth.getCurrentUser();
         Log.d("newTag", currentUser.getEmail().toString());
+    }*/
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        Log.d("newTag", "name : " + mAuth.getUid());
+        if(mAuth.getCurrentUser() != null){
+            Intent intent = new Intent(Welcome.this, NewsFeed.class);
+            startActivity(intent);
+        }
     }
-
-
-
-
-
 }

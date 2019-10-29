@@ -110,4 +110,14 @@ public class SignUp extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth != null){
+            Intent intent = new Intent(SignUp.this, NewsFeed.class);
+            startActivity(intent);
+        }
+    }
+
 }
