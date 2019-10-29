@@ -100,6 +100,15 @@ public class Profile extends AppCompatActivity {
 
             database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
 
+        findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, NewsFeed.class);
+                startActivity(intent);
+            }
+        });
+        database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+
         findViewById(R.id.profile_button_seeposts).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

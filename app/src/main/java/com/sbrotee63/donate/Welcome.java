@@ -28,18 +28,19 @@ public class Welcome extends AppCompatActivity {
 
     private static final int RC_SIGN_IN =0 ;
     public FirebaseAuth mAuth;
-    //public GoogleSignInClient mGoogleSignInClient;
+    public FirebaseUser currentUser;
+    public GoogleSignInClient mGoogleSignInClient;
 
-    /*GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
-            .build();*/
+            .build();
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         setContentView(R.layout.activity_welcome);
 
@@ -60,19 +61,25 @@ public class Welcome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //signIn();
-            }
-        });*/
+        //findViewById(R.id.sign_in_button).setOnClickListener((view -> {signIn();}));
 
     }
-    /*void signIn() {
+
+    /*public void onStart()
+    {
+        super.onStart();
+        // Check for existing Google Sign In account, if the user is already signed in
+// the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+        currentUser = mAuth.getCurrentUser();
+        Log.d("newTag", currentUser.getEmail().toString());
+    }
+
+     void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -85,7 +92,6 @@ public class Welcome extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
-
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
