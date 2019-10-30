@@ -26,21 +26,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Welcome extends AppCompatActivity {
 
-    private static final int RC_SIGN_IN =0 ;
+    private static final int RC_SIGN_IN = 0;
     public FirebaseAuth mAuth;
     public FirebaseUser currentUser;
     public GoogleSignInClient mGoogleSignInClient;
 
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build();
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
 
         setContentView(R.layout.activity_welcome);
 
@@ -65,21 +62,21 @@ public class Welcome extends AppCompatActivity {
 
     }
 
-    /*public void onStart()
-    {
+    /*public void onStart() {
         super.onStart();
         // Check for existing Google Sign In account, if the user is already signed in
 // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
 
         currentUser = mAuth.getCurrentUser();
         Log.d("newTag", currentUser.getEmail().toString());
-    }
+    }*/
 
-     void signIn() {
+    void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -92,6 +89,7 @@ public class Welcome extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
@@ -105,7 +103,8 @@ public class Welcome extends AppCompatActivity {
             Log.w("new tag", "signInResult:failed code=" + e.getStatusCode());
             Toast.makeText(Welcome.this, "Log In Failed.", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
+
 
     /* public void onStart()
     {
@@ -128,7 +127,6 @@ public class Welcome extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth = FirebaseAuth.getInstance();
-        Log.d("newTag", "name : " + mAuth.getUid());
         if(mAuth.getCurrentUser() != null){
 
             ValueEventListener valueEventListener = new ValueEventListener() {

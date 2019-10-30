@@ -34,6 +34,7 @@ public class PostNewEvent extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
+
         ((Button)findViewById(R.id.post_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +71,7 @@ public class PostNewEvent extends AppCompatActivity {
     public  void lastWork(Integer cur){
         post.postId = Integer.toString(cur);
         database.getReference("post/posts/" + post.postId).setValue(post);
-        database.getReference("notification/" + post.bloodGroup).push().setValue("+"  + post.postId);
+        database.getReference("notification/" + post.bloodGroup).push().setValue("0+"  + post.postId);
         Toast.makeText(PostNewEvent.this, "Request posted", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);
         startActivity(intent);

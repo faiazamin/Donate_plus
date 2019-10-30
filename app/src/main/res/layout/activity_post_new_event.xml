@@ -241,6 +241,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:id="@+id/post_button"
                         android:background="@drawable/solid_button"
                         android:text="@string/postdescription_button_post"
                         android:textColor="#FFFFFF"

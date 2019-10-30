@@ -37,6 +37,7 @@ public class PostDescription extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 database.getReference("post/response/" + postId).push().setValue(user.getUid());
+                // TODO add a notification for new response
             }
         });;
 

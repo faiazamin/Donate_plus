@@ -35,9 +35,27 @@ public class RecyclerViewAdapterNotifications extends RecyclerView.Adapter<Recyc
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called.");
+        //Log.d(TAG, "onBindViewHolder: called.");
 
-        holder.notification.setText(notifications.get(position));
+        final String postId = notifications.get(position).substring(2);
+        if(notifications.get(position).charAt(0) == '0'){
+            // notifications not seen yet
+        }
+        else if(notifications.get(position).charAt(0) == '1'){
+            // notification seen already
+        }
+        if(notifications.get(position).charAt(1) == '+'){
+            // normal post notification
+            holder.notification.setText("New request for " + NewsFeed.user.bloodGroup + " has arrived");
+        }
+        else if(notifications.get(position).charAt(1) == '*'){
+            // urgent repost notification
+            holder.notification.setText("New request for " + NewsFeed.user.bloodGroup + " has arrived");
+        }
+        else if(notifications.get(position).charAt(1) == '-'){
+            // response notification
+            holder.notification.setText("Your post has been responsed");
+        }
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +65,7 @@ public class RecyclerViewAdapterNotifications extends RecyclerView.Adapter<Recyc
                 Toast.makeText(mContext, notifications.get(position), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, PostDescription.class);
+                intent.putExtra("postId", postId);
                 intent.putExtra("notification", notifications.get(position));
                 mContext.startActivity(intent);
             }
