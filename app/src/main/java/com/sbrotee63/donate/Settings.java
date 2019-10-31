@@ -54,5 +54,15 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        Button logoutButton = (Button) findViewById(R.id.setting_button_logout);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, ShowPostLocation.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
