@@ -3,10 +3,12 @@ package com.sbrotee63.donate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,6 +34,9 @@ public class SignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    DatePickerDialog datePickerDialog;
+    DatePicker datePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,44 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signUp();
+            }
+        });
+
+        findViewById(R.id.signup_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker = new DatePicker(SignUp.this);
+                int currentYear = datePicker.getYear();
+                int currentMonth = datePicker.getMonth()+1;
+                int currentDay = datePicker.getDayOfMonth();
+
+                datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                    }
+                },currentYear, currentMonth, currentDay);
+                datePickerDialog.show();
+
+            }
+        });
+
+        findViewById(R.id.signup_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker = new DatePicker(SignUp.this);
+                int currentYear = datePicker.getYear();
+                int currentMonth = datePicker.getMonth()+1;
+                int currentDay = datePicker.getDayOfMonth();
+
+                datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                    }
+                },currentYear, currentMonth, currentDay);
+                datePickerDialog.show();
+
             }
         });
     }

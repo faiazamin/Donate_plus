@@ -61,7 +61,7 @@ public class Notifications extends AppCompatActivity {
             }
         });
 
-        Button newsfeedButton = (Button) findViewById(R.id.feed_button_notification);
+        Button newsfeedButton = (Button) findViewById(R.id.feed_button_feed);
 
         newsfeedButton.setOnClickListener(new View.OnClickListener() {
             @Override

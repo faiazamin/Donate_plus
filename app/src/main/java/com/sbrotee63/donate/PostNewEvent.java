@@ -3,11 +3,15 @@ package com.sbrotee63.donate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +29,10 @@ public class PostNewEvent extends AppCompatActivity {
 
     Post post;
 
+
+    DatePickerDialog datePickerDialog;
+    DatePicker datePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +49,7 @@ public class PostNewEvent extends AppCompatActivity {
                 post = new Post( ((EditText)findViewById(R.id.post_name)).getText().toString(),
                         ((EditText)findViewById(R.id.post_bloodgroup)).getText().toString(),
                         ((EditText)findViewById(R.id.post_location)).getText().toString(),
-                        ((EditText)findViewById(R.id.post_dateofbirth)).getText().toString(),
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).getText().toString(),
                         ((EditText)findViewById(R.id.post_cellno)).getText().toString(),
                         currentUser.getUid());
                 if(post.isEmpty()){
@@ -66,6 +74,26 @@ public class PostNewEvent extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.post_datepicker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker = new DatePicker(PostNewEvent.this);
+                int currentYear = datePicker.getYear();
+                int currentMonth = datePicker.getMonth()+1;
+                int currentDay = datePicker.getDayOfMonth();
+
+                datePickerDialog = new DatePickerDialog(PostNewEvent.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                    }
+                },currentYear, currentMonth, currentDay);
+                datePickerDialog.show();
+
+            }
+        });
+
+
     }
 
     public  void lastWork(Integer cur){
@@ -76,4 +104,6 @@ public class PostNewEvent extends AppCompatActivity {
         Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);
         startActivity(intent);
     }
+
+
 }
