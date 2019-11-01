@@ -118,7 +118,7 @@ public class ShowPostLocation extends FragmentActivity {
                                                 return;
                                             }
                                             mMap.setMyLocationEnabled(true);
-                                            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+                                            mMap.getUiSettings().setMyLocationButtonEnabled(false);
                 }
 
 
