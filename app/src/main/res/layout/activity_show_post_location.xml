@@ -34,6 +34,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/postlocation_image_search"
             android:layout_centerVertical="true"
+            android:id="@+id/postlocation_searchbar"
             android:imeOptions="actionSearch"
             ></EditText>
 

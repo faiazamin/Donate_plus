@@ -3,11 +3,17 @@ package com.sbrotee63.donate;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,11 +34,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShowPostLocation extends FragmentActivity {
 
     private GoogleMap mMap;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
+
+    private EditText searchBar = (EditText) findViewById(R.id.postlocation_searchbar);
 
     private boolean mLocationPermission = false;
     private static final int LOCATION_PERMISSION = 1234;
@@ -100,6 +112,43 @@ public class ShowPostLocation extends FragmentActivity {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
+    private void init(){
+        searchBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_DONE
+                ||actionId == EditorInfo.IME_ACTION_SEARCH
+                ||event.getAction() == KeyEvent.ACTION_DOWN
+                ||event.getAction() == KeyEvent.KEYCODE_ENTER)
+                {
+                    geoLocat();
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void geoLocat(){
+
+        String searchString = searchBar.getText().toString();
+
+        Geocoder geocoder = new Geocoder(ShowPostLocation.this);
+
+        List<Address> addresses = new ArrayList<>();
+
+        try {
+            addresses = geocoder.getFromLocationName(searchString, 1);
+        }
+        catch (IOException e){
+            Log.d("newTag",e.toString());
+        }
+
+        if(addresses.size()>0){
+            Address address = addresses.get(0);
+        }
+    }
+
     private void initMap() {
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -119,6 +168,7 @@ public class ShowPostLocation extends FragmentActivity {
                                             }
                                             mMap.setMyLocationEnabled(true);
                                             mMap.getUiSettings().setMyLocationButtonEnabled(false);
+                                            init();
                 }
 
 
