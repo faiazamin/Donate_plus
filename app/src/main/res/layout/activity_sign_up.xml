@@ -292,7 +292,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/signup_text_dateofbirth"
                         android:layout_weight="5"
-                        android:text="DD-MM-YYYY"
+                        android:hint="DD-MM-YYYY"
                         android:textAlignment="center"
                         android:textSize="15dp"/>
 
