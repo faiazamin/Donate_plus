@@ -62,7 +62,7 @@ public class SignUp extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
@@ -81,7 +81,7 @@ public class SignUp extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();

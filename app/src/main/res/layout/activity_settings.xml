@@ -25,24 +25,28 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_profile"
             android:layout_weight="1"
             android:background="@drawable/icon_profile"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_notification"
             android:layout_weight="1"
             android:background="@drawable/icon_notification"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_hospitals"
             android:layout_weight="1"
             android:background="@drawable/icon_hobb"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_settings"
             android:layout_weight="1"
             android:background="@drawable/icon_setting_green"/>
 
@@ -51,6 +55,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/setting_button_logout"
         android:background="@drawable/solid_button"
         android:text="LOG OUT"
         android:layout_gravity="center_horizontal"

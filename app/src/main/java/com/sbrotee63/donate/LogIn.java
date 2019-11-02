@@ -21,6 +21,7 @@ public class LogIn extends AppCompatActivity {
     String email;
     String password;
 
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -37,6 +38,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logIn(emailF.getText().toString().trim(), passwordF.getText().toString().trim());
+
             }
         });
     }
@@ -47,11 +49,16 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Log.d("Donate+", "LogInWithEmail: Success");
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(LogIn.this, "Log In Successful.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LogIn.this, NewsFeed.class);
-                    startActivity(intent);
+                    if(!mAuth.getCurrentUser().isEmailVerified()){
+                        Toast.makeText(LogIn.this, "Please verify your email.", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Log.d("Donate+", "LogInWithEmail: Success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Toast.makeText(LogIn.this, "Log In Successful.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LogIn.this, NewsFeed.class);
+                        startActivity(intent);
+                    }
                 }
                 else
                 {
@@ -60,5 +67,15 @@ public class LogIn extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth != null){
+            Intent intent = new Intent(LogIn.this, NewsFeed.class);
+            startActivity(intent);
+        }
     }
 }

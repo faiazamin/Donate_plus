@@ -34,18 +34,21 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_notification"
             android:layout_weight="1"
-            android:background="@drawable/icon_notification"/>
+            android:background="@drawable/icon_notification" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_hospitals"
             android:layout_weight="1"
             android:background="@drawable/icon_hobb"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_settings"
             android:layout_weight="1"
             android:background="@drawable/icon_setting"/>
 

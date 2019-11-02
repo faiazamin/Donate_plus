@@ -1,5 +1,7 @@
 package com.sbrotee63.donate;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,24 +18,26 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Welcome extends AppCompatActivity {
 
-    private static final int RC_SIGN_IN =0 ;
+    private static final int RC_SIGN_IN = 0;
     public FirebaseAuth mAuth;
     public FirebaseUser currentUser;
     public GoogleSignInClient mGoogleSignInClient;
 
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build();
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
 
         setContentView(R.layout.activity_welcome);
 
@@ -54,25 +58,25 @@ public class Welcome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        findViewById(R.id.sign_in_button).setOnClickListener((view -> {signIn();}));
+        //findViewById(R.id.sign_in_button).setOnClickListener((view -> {signIn();}));
 
     }
 
-    public void onStart()
-    {
+    /*public void onStart() {
         super.onStart();
         // Check for existing Google Sign In account, if the user is already signed in
 // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
 
         currentUser = mAuth.getCurrentUser();
         Log.d("newTag", currentUser.getEmail().toString());
-    }
+    }*/
 
-     void signIn() {
+    void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -85,6 +89,7 @@ public class Welcome extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
@@ -100,4 +105,76 @@ public class Welcome extends AppCompatActivity {
         }
     }
 
+
+    /* public void onStart()
+    {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth != null){
+            Intent intent = new Intent(Welcome.this, NewsFeed.class);
+            startActivity(intent);
+        }
+        // Check for existing Google Sign In account, if the user is already signed in
+// the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+        currentUser = mAuth.getCurrentUser();
+        Log.d("newTag", currentUser.getEmail().toString());
+    }*/
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    NewsFeed.user = dataSnapshot.getValue(User.class);
+
+                    Log.d("newTag", "GOT HIM");
+
+                    ChildEventListener childEventListener = new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            String notification = dataSnapshot.getValue(String.class);
+                            FirebaseDatabase.getInstance().getReference("notification/" + mAuth.getCurrentUser().getUid()).push().setValue(notification);
+                        }
+
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    };
+                    FirebaseDatabase.getInstance().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            };
+            FirebaseDatabase.getInstance().getReference("user/info/" + mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
+
+            Intent intent = new Intent(Welcome.this, NewsFeed.class);
+            startActivity(intent);
+        }
+    }
 }

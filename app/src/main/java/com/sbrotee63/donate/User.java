@@ -8,7 +8,6 @@ public class User {
     public String address;
     public String cellNo;
     public String lastBloodDonation;
-    public String visibility;
 
     User(){
 
@@ -22,6 +21,5 @@ public class User {
         this.address = address;
         this.cellNo = cellNo;
         this.lastBloodDonation = lastBloodDonation;
-        this.visibility = "1";
     }
 }

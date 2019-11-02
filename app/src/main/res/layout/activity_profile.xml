@@ -25,24 +25,28 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_profile"
             android:layout_weight="1"
             android:background="@drawable/icon_profile_green"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_notification"
             android:layout_weight="1"
             android:background="@drawable/icon_notification"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_hospitals"
             android:layout_weight="1"
             android:background="@drawable/icon_hobb"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:id="@+id/feed_button_settings"
             android:layout_weight="1"
             android:background="@drawable/icon_setting"/>
 
@@ -101,6 +105,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/profile_name"
                         android:layout_weight="4" />
                 </LinearLayout>
             </LinearLayout>
@@ -141,6 +146,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:id="@+id/profile_email"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -180,6 +186,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:id="@+id/profile_bloodgroup"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -219,6 +226,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:id="@+id/profile_dateofbirth"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -258,6 +266,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:id="@+id/profile_cellno"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -297,6 +306,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:id="@+id/profile_address"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -336,6 +346,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:id="@+id/profile_lastblooddonation"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -360,6 +371,25 @@
                     android:layout_weight="4"
                     android:background="@drawable/solid_button"
                     android:text="See Your Posts"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <Button
+                    android:id="@+id/profile_button_seerespons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/solid_button"
+                    android:text="See Your Responses"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp" />
             </LinearLayout>

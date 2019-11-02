@@ -79,13 +79,13 @@ public class PostNewEvent extends AppCompatActivity {
             public void onClick(View view) {
                 datePicker = new DatePicker(PostNewEvent.this);
                 int currentYear = datePicker.getYear();
-                int currentMonth = datePicker.getMonth()+1;
+                int currentMonth = (datePicker.getMonth())+1;
                 int currentDay = datePicker.getDayOfMonth();
 
                 datePickerDialog = new DatePickerDialog(PostNewEvent.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();

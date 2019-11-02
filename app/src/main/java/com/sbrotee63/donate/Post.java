@@ -8,7 +8,8 @@ public class Post {
     public String dateOfBirth;
     public String cellno;
     public String seekerId;
-    Boolean visibility;
+    public String postId;
+    public String response = "0";
 
     Post(){
 
@@ -21,7 +22,6 @@ public class Post {
         this.dateOfBirth = dateOfBirth;
         this.cellno = cellno;
         seekerId = uid;
-        visibility = true;
     }
 
     public Boolean isEmpty(){

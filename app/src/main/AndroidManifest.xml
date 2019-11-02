@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostNewEvent"/>
+        <activity android:name=".ShowPostLocation"></activity>
+        <activity android:name=".PostNewEvent" />
         <activity android:name=".PostDescription" />
         <activity android:name=".MyPosts" />
         <activity android:name=".HospitalAndBloodBank" />
@@ -23,10 +24,14 @@
         <activity android:name=".Settings" />
         <activity android:name=".Notifications" />
         <activity android:name=".NewsFeed" />
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile" />
         <activity android:name=".LogIn" />
         <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAY5l6-B0V6TGUByLYzW7sHKdoSEEC1iv4"/>
+
     </application>
 
 </manifest>

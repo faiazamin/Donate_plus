@@ -119,6 +119,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
+                    android:id="@+id/postdes_bloodgroup"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -160,6 +161,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
+                    android:id="@+id/postdes_location"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -201,6 +203,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
+                    android:id="@+id/postdes_cellno"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -242,6 +245,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/solid_btn_red"
                     android:layout_weight="4"
+                    android:id="@+id/postdes_dateofbirth"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -274,8 +278,9 @@
                 >
 
                 <Button
+                    android:id="@+id/postdesc_button_accept"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="22dp"
                     android:background="@drawable/solid_button"
                     android:text="@string/postdescription_button_accept"
                     android:textColor="#FFFFFF" />
