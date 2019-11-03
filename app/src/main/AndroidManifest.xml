@@ -33,7 +33,8 @@
         <activity android:name=".Notifications" />
         <activity android:name=".NewsFeed" />
         <activity android:name=".Profile" />
-        <activity android:name=".LogIn" />
+        <activity android:name=".LogIn">
+        </activity>
         <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
 

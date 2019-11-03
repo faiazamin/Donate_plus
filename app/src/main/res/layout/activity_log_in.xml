@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FEF9C2"
     android:weightSum="10"
     tools:context=".LogIn">
 
@@ -23,45 +22,46 @@
         android:layout_height="0dp"
         android:layout_weight="1"></LinearLayout>
 
-    <EditText
-        android:id="@+id/login_text_email"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Email "
-        android:inputType="textPersonName"
-        android:textSize="24sp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="E-mail">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_text_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Password">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/login_password_password"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:textSize="24sp" />
+        android:maxLines="1" />
+</com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></LinearLayout>
+        android:layout_weight="1.5"></LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button_login"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/solid_button"
-        android:text="Log In"
-        android:textColor="#ffff"
-        android:textSize="24sp"
-        />
+        android:text="Log In">
+    </com.google.android.material.button.MaterialButton>
 
 </LinearLayout>
