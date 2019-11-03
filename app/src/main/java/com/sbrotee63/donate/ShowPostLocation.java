@@ -11,8 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +58,7 @@ public class ShowPostLocation extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_post_location);
         getLocationPermission();
+
     }
 
     private void getLocationPermission(){
@@ -128,6 +131,12 @@ public class ShowPostLocation extends FragmentActivity {
                 return false;
             }
         });
+         findViewById(R.id.ic_gps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDeviceLocation();
+            }
+        });
     }
 
     private void geoLocat(){
@@ -145,7 +154,7 @@ public class ShowPostLocation extends FragmentActivity {
             Address address = list.get(0);
             Log.d("map","Found new location "+address.toString()+".");
             Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
-            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM);
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
         }
     }
     private void getDeviceLocation() {
@@ -160,7 +169,7 @@ public class ShowPostLocation extends FragmentActivity {
                         if (task.isSuccessful()) {
                             Log.d("map", "location found");
                             Location currentLocation = (Location) task.getResult();
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM);
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM,currentLocation.toString());
                         } else {
                             Log.d("map", "current location not found");
                         }
@@ -172,9 +181,12 @@ public class ShowPostLocation extends FragmentActivity {
         }
     }
 
-    private void moveCamera(LatLng latLng, float zoom) {
+    private void moveCamera(LatLng latLng, float zoom, String title) {
         Log.d("map", "moveCamera found");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+        MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+                mMap.addMarker(options);
     }
 
     private void initMap() {

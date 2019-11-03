@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/solid_btn"
+        android:id="@+id/relative1"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
@@ -40,5 +41,16 @@
             tools:ignore="DuplicateIds"></EditText>
 
     </RelativeLayout>
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/relative1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/ic_gps"
+        android:src="@drawable/icon_gps"></ImageView>
+
 
 </RelativeLayout>
