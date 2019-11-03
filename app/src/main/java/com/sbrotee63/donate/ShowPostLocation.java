@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -44,11 +45,11 @@ public class ShowPostLocation extends FragmentActivity {
 
     private FusedLocationProviderClient fusedLocationProviderClient;
 
-    private EditText searchBar = (EditText) findViewById(R.id.postlocation_searchbar);
-
     private boolean mLocationPermission = false;
     private static final int LOCATION_PERMISSION = 1234;
     private static final float ZOOM = 15f;
+
+    //private EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +61,11 @@ public class ShowPostLocation extends FragmentActivity {
     private void getLocationPermission(){
         String[] permissions ={
                 Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION        } ;
-        Log.d("newTag","getLocationPermission invoked");
+        Log.d("map","getLocationPermission invoked");
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),permissions[0]) == PackageManager.PERMISSION_GRANTED){
-            Log.d("newTag",permissions[0]);
+            Log.d("map",permissions[0]);
             if(ContextCompat.checkSelfPermission(this.getApplicationContext(),permissions[1]) == PackageManager.PERMISSION_GRANTED){
-                Log.d("newTag",permissions[1]);
+                Log.d("map",permissions[1]);
                 mLocationPermission = true;
                 initMap();
             }
@@ -72,20 +73,66 @@ public class ShowPostLocation extends FragmentActivity {
                 ActivityCompat.requestPermissions(this,
                         permissions,
                         LOCATION_PERMISSION);
-                Log.d("newTag",permissions[1]+"revoked");
+                Log.d("map",permissions[1]+" revoked");
             }
         }
         else{
             ActivityCompat.requestPermissions(this,
                     permissions,
                     LOCATION_PERMISSION);
-            Log.d("newTag",permissions[0]+"revoked");
+            Log.d("map",permissions[0]+" revoked");
         }
     }
 
-   private void geoLocat(){
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        mLocationPermission = false;
+        switch (requestCode){
+            case LOCATION_PERMISSION: {
+                if(grantResults.length > 0 ){
+                    for(int i = 0; i < grantResults.length; ++i) {
+                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                            mLocationPermission = false;
+                            return;
+                        }
+                    }
 
-         EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
+                    mLocationPermission = true;
+                    Log.d("map","onRequestPermissionsResult invoked");
+                    initMap();
+                }
+            }
+        }
+
+    }
+
+    private void init(){
+        Log.d("map.","init : initializing");
+        EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
+
+        searchbar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView searchbar, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        ||actionId == EditorInfo.IME_ACTION_DONE
+                        || event.getAction() == KeyEvent.KEYCODE_ENTER
+                        || event.getAction() == KeyEvent.ACTION_DOWN
+                        || actionId == EditorInfo.IME_ACTION_NEXT
+                        || actionId == EditorInfo.IME_ACTION_GO
+                        || actionId == EditorInfo.IME_ACTION_SEND
+                ){
+                    Log.d("map","Something happened. ");
+
+                    geoLocat();
+                }
+                return false;
+            }
+        });
+    }
+
+    private void geoLocat(){
+
+        EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
         String searchstring = searchbar.getText().toString();
         Geocoder geocoder = new Geocoder(this);
         List<Address> list = new ArrayList<>();
@@ -97,12 +144,12 @@ public class ShowPostLocation extends FragmentActivity {
         if(list.size()>0){
             Address address = list.get(0);
             Log.d("map","Found new location "+address.toString()+".");
-            //Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
         }
     }
     private void getDeviceLocation() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        Log.d("newTag", "getDeviceLocation found");
+        Log.d("map", "getDeviceLocation found");
         try {
             if (mLocationPermission) {
                 Task location = fusedLocationProviderClient.getLastLocation();
@@ -110,43 +157,24 @@ public class ShowPostLocation extends FragmentActivity {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            Log.d("newTag", "location found");
+                            Log.d("map", "location found");
                             Location currentLocation = (Location) task.getResult();
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM);
                         } else {
-                            Log.d("newTag", "current location not found");
+                            Log.d("map", "current location not found");
                         }
                     }
                 });
             }
         } catch (SecurityException s) {
-            Log.d("newTag", "SecurityException found");
+            Log.d("map", "SecurityException found");
         }
     }
 
     private void moveCamera(LatLng latLng, float zoom) {
-        Log.d("newTag", "moveCamera found");
+        Log.d("map", "moveCamera found");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
-
-    private void init(){
-        searchBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_DONE
-                ||actionId == EditorInfo.IME_ACTION_SEARCH
-                ||event.getAction() == KeyEvent.ACTION_DOWN
-                ||event.getAction() == KeyEvent.KEYCODE_ENTER)
-                {
-                    geoLocat();
-                }
-
-                return false;
-            }
-        });
-    }
-
-
 
     private void initMap() {
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -156,7 +184,7 @@ public class ShowPostLocation extends FragmentActivity {
                                     @Override
                                     public void onMapReady(GoogleMap googleMap) {
                                         mMap = googleMap;
-                                        Log.d("newTag", "initMap invoked");
+                                        Log.d("map", "initMap invoked");
 
                                         if (mLocationPermission) {
                                             getDeviceLocation();
@@ -167,11 +195,12 @@ public class ShowPostLocation extends FragmentActivity {
                                             }
                                             mMap.setMyLocationEnabled(true);
                                             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-                }
+                                            init();
+                                        }
 
 
-            }
-        }
+                                    }
+                                }
         );
 
 
@@ -181,21 +210,5 @@ public class ShowPostLocation extends FragmentActivity {
 
 
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        mLocationPermission = false;
 
-        if(grantResults.length > 0 ){
-            for(int i = 0; i < grantResults.length; ++i) {
-                if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
-                    mLocationPermission = false;
-                    return;
-                }
-            }
-
-            mLocationPermission = true;
-            Log.d("newTag","onRequestPermissionsResult invoked");
-            initMap();
-        }
-    }
 }

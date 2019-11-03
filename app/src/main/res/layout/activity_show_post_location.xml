@@ -36,6 +36,7 @@
             android:layout_toRightOf="@+id/postlocation_image_search"
             android:layout_centerVertical="true"
             android:imeOptions="actionSearch"
+            android:hint="Type location and press enter"
             tools:ignore="DuplicateIds"></EditText>
 
     </RelativeLayout>
