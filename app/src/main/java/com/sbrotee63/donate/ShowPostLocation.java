@@ -2,6 +2,7 @@ package com.sbrotee63.donate;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,12 +53,17 @@ public class ShowPostLocation extends FragmentActivity {
     private static final int LOCATION_PERMISSION = 1234;
     private static final float ZOOM = 15f;
 
+    String flag;
+    String location;
     //private EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_post_location);
+        flag = getIntent().getStringExtra("flag");
+        location = getIntent().getStringExtra("location");
+
         getLocationPermission();
 
     }
@@ -134,7 +141,10 @@ public class ShowPostLocation extends FragmentActivity {
          findViewById(R.id.ic_gps).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getDeviceLocation();
+
+                    getDeviceLocation();
+
+                hideSoftKey();
             }
         });
     }
@@ -143,6 +153,25 @@ public class ShowPostLocation extends FragmentActivity {
 
         EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
         String searchstring = searchbar.getText().toString();
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> list = new ArrayList<>();
+        try{
+            list = geocoder.getFromLocationName(searchstring,1);
+        }catch (IOException e){
+            Log.d("map","IOexception : "+e.getMessage());
+        }
+        if(list.size()>0){
+            Address address = list.get(0);
+            Log.d("map","Found new location "+address.toString()+".");
+            Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
+        }
+    }
+
+    private void showPostLocation(){
+
+
+        String searchstring = location;
         Geocoder geocoder = new Geocoder(this);
         List<Address> list = new ArrayList<>();
         try{
@@ -169,7 +198,7 @@ public class ShowPostLocation extends FragmentActivity {
                         if (task.isSuccessful()) {
                             Log.d("map", "location found");
                             Location currentLocation = (Location) task.getResult();
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM,currentLocation.toString());
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM, "my location ");
                         } else {
                             Log.d("map", "current location not found");
                         }
@@ -186,7 +215,12 @@ public class ShowPostLocation extends FragmentActivity {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
         MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+        if(title!="my location")
                 mMap.addMarker(options);
+        hideSoftKey();
+    }
+    private void hideSoftKey(){
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void initMap() {
@@ -200,7 +234,12 @@ public class ShowPostLocation extends FragmentActivity {
                                         Log.d("map", "initMap invoked");
 
                                         if (mLocationPermission) {
-                                            getDeviceLocation();
+                                            if(flag.equals("post")){
+                                                showPostLocation();
+                                                Toast.makeText(ShowPostLocation.this,location, 0).show();
+                                            }else {
+                                                getDeviceLocation();
+                                            }
 
                                             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 

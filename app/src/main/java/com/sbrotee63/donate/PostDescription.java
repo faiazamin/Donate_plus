@@ -38,6 +38,16 @@ public class PostDescription extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.postdes_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostDescription.this, ShowPostLocation.class);
+                intent.putExtra("location", ((Button)findViewById(R.id.postdes_location)).getText().toString());
+                intent.putExtra("flag", "post");
+                startActivity(intent);
+            }
+        });
+
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
