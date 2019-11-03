@@ -145,6 +145,7 @@ public class ShowPostLocation extends FragmentActivity {
             Address address = list.get(0);
             Log.d("map","Found new location "+address.toString()+".");
             Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM);
         }
     }
     private void getDeviceLocation() {
