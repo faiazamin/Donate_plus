@@ -98,7 +98,7 @@ public class Profile extends AppCompatActivity {
             };
 
 
-            database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+        database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override

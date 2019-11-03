@@ -154,11 +154,11 @@ public class NewsFeed extends AppCompatActivity {
                             statuses.add("");
                         }
                     }
-                    Collections.reverse(bloodGroups);
+                    /*Collections.reverse(bloodGroups);
                     Collections.reverse(postId);
                     Collections.reverse(locations);
                     Collections.reverse(statuses);
-                    initRecyclerView();
+                    initRecyclerView();*/
                 }
 
                 @Override

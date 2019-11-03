@@ -18,18 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LogIn extends AppCompatActivity {
 
-    String email;
-    String password;
-
-
-    private FirebaseAuth mAuth;
+    FirebaseInfo firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        mAuth = FirebaseAuth.getInstance();
+        firebase = Welcome.firebase;
 
         final EditText emailF = (EditText) findViewById(R.id.login_text_email);
         final EditText passwordF = (EditText) findViewById(R.id.login_password_password);
@@ -45,16 +41,15 @@ public class LogIn extends AppCompatActivity {
 
     private void logIn(String email, String password)
     {
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebase.getmAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    if(!mAuth.getCurrentUser().isEmailVerified()){
+                    if(!firebase.getmAuth().getCurrentUser().isEmailVerified()){
                         Toast.makeText(LogIn.this, "Please verify your email.", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         Log.d("Donate+", "LogInWithEmail: Success");
-                        FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(LogIn.this, "Log In Successful.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LogIn.this, NewsFeed.class);
                         startActivity(intent);
@@ -72,8 +67,8 @@ public class LogIn extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth != null){
+        firebase = Welcome.firebase;
+        if(firebase.isActiveUser()){
             Intent intent = new Intent(LogIn.this, NewsFeed.class);
             startActivity(intent);
         }

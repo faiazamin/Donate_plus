@@ -98,7 +98,7 @@ public class Notifications extends AppCompatActivity {
 
             }
         };
-        database.getReference("notification/" + currentUser.getUid()).limitToLast(30).addListenerForSingleValueEvent(valueEventListener);
+        database.getReference("notification/" + currentUser.getUid()).limitToLast(30).addValueEventListener(valueEventListener);
 
         //initRecyclerView();
     }

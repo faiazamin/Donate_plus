@@ -83,6 +83,23 @@ public class ShowPostLocation extends FragmentActivity {
         }
     }
 
+   private void geoLocat(){
+
+         EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
+        String searchstring = searchbar.getText().toString();
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> list = new ArrayList<>();
+        try{
+            list = geocoder.getFromLocationName(searchstring,1);
+        }catch (IOException e){
+            Log.d("map","IOexception : "+e.getMessage());
+        }
+        if(list.size()>0){
+            Address address = list.get(0);
+            Log.d("map","Found new location "+address.toString()+".");
+            //Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
+        }
+    }
     private void getDeviceLocation() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         Log.d("newTag", "getDeviceLocation found");
@@ -129,25 +146,7 @@ public class ShowPostLocation extends FragmentActivity {
         });
     }
 
-    private void geoLocat(){
 
-        String searchString = searchBar.getText().toString();
-
-        Geocoder geocoder = new Geocoder(ShowPostLocation.this);
-
-        List<Address> addresses = new ArrayList<>();
-
-        try {
-            addresses = geocoder.getFromLocationName(searchString, 1);
-        }
-        catch (IOException e){
-            Log.d("newTag",e.toString());
-        }
-
-        if(addresses.size()>0){
-            Address address = addresses.get(0);
-        }
-    }
 
     private void initMap() {
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -168,7 +167,6 @@ public class ShowPostLocation extends FragmentActivity {
                                             }
                                             mMap.setMyLocationEnabled(true);
                                             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-                                            init();
                 }
 
 
