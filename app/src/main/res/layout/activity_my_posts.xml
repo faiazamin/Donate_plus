@@ -4,50 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEF9C2"
     android:orientation="vertical"
     tools:context=".MyPosts">
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:weightSum="5"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-        <Button
-            android:id="@+id/feed_button_feed"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/icon_feed" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/icon_profile_green"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/icon_notification"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/icon_hobb"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/icon_setting"/>
-
-    </LinearLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"

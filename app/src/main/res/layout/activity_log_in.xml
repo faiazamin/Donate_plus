@@ -36,7 +36,6 @@
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:maxLines="1" />
-</com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,7 +59,9 @@
         android:id="@+id/login_button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/StyleButton"
         android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
         android:text="Log In">
     </com.google.android.material.button.MaterialButton>
 

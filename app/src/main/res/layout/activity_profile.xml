@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEF9C2"
-    tools:context=".NewsFeed"
+    tools:context=".Profile"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,40 +14,55 @@
         android:orientation="horizontal"
         android:layout_margin="10dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/feed_button_feed"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:background="@drawable/icon_feed" />
+            android:layout_margin="2dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:icon="@drawable/icon_feed"
+            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:id="@+id/feed_button_profile"
             android:layout_weight="1"
-            android:background="@drawable/icon_profile_green"/>
+            android:layout_margin="2dp"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:icon="@drawable/icon_profile"
+            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:id="@+id/feed_button_notification"
             android:layout_weight="1"
-            android:background="@drawable/icon_notification"/>
+            android:layout_margin="2dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:icon="@drawable/icon_notification"
+            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:id="@+id/feed_button_hospitals"
             android:layout_weight="1"
-            android:background="@drawable/icon_hobb"/>
+            android:layout_margin="2dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:icon="@drawable/icon_hobb"
+            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:id="@+id/feed_button_settings"
             android:layout_weight="1"
-            android:background="@drawable/icon_setting"/>
+            android:layout_margin="2dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:icon="@drawable/icon_setting"
+            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
 
     </LinearLayout>
 
@@ -88,12 +102,10 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/solid_button"
-                        android:text="Name"
-                        android:textColor="#FFFFFF" />
+                        android:text="Name"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -102,13 +114,14 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/profile_name"
-                        android:layout_weight="4" />
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
