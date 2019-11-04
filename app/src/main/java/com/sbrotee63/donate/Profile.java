@@ -24,12 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile extends AppCompatActivity {
 
 
-    FirebaseDatabase database;
-    FirebaseAuth mAuth;
-    FirebaseUser currentUser;
-
-
-
+    FirebaseInfo firebase;
 
 
     @Override
@@ -37,9 +32,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        firebase = Welcome.firebase;
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
@@ -98,7 +91,7 @@ public class Profile extends AppCompatActivity {
             };
 
 
-            database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+        firebase.getDatabase().getReference("user/info/" + firebase.getUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +100,7 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+        firebase.getDatabase().getReference("user/info/" + firebase.getUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.profile_button_seeposts).setOnClickListener(new View.OnClickListener() {
             @Override

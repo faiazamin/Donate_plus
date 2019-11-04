@@ -34,9 +34,7 @@ public class NewsFeed extends AppCompatActivity {
 
     static public User user;
 
-    FirebaseAuth mAuth;
-    FirebaseUser currentUser;
-    FirebaseDatabase database;
+    FirebaseInfo firebase;
     boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -75,9 +73,7 @@ public class NewsFeed extends AppCompatActivity {
         setContentView(R.layout.activity_news_feed);
 
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
+        firebase = Welcome.firebase;
 
 
 
@@ -154,11 +150,11 @@ public class NewsFeed extends AppCompatActivity {
                             statuses.add("");
                         }
                     }
-                    Collections.reverse(bloodGroups);
+                    /*Collections.reverse(bloodGroups);
                     Collections.reverse(postId);
                     Collections.reverse(locations);
                     Collections.reverse(statuses);
-                    initRecyclerView();
+                    initRecyclerView();*/
                 }
 
                 @Override
@@ -166,7 +162,7 @@ public class NewsFeed extends AppCompatActivity {
                     Log.w("newTag", "loadPost:onCancelled", databaseError.toException());
                 }
             };
-        database.getReference("post/posts").addValueEventListener(postListener);
+        firebase.getDatabase().getReference("post/posts").addValueEventListener(postListener);
         bloodGroups.add("O+");
         locations.add("Sylhet");
         statuses.add("Urgent");
