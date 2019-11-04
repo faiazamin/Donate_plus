@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PostNewEvent extends AppCompatActivity {
 
-    FirebaseInfo firebase;
+
 
     Post post;
 
@@ -36,7 +36,7 @@ public class PostNewEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_new_event);
 
-        firebase = Welcome.firebase;
+
 
 
         ((Button)findViewById(R.id.post_button)).setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,7 @@ public class PostNewEvent extends AppCompatActivity {
                         ((EditText)findViewById(R.id.post_location)).getText().toString(),
                         ((EditText)findViewById(R.id.post_dateofrequirement)).getText().toString(),
                         ((EditText)findViewById(R.id.post_cellno)).getText().toString(),
-                        firebase.getUser().getUid());
+                       FirebaseAuth.getInstance().getCurrentUser().getUid());
                 if(post.isEmpty()){
                     Toast.makeText(PostNewEvent.this, "Please fill all the values", Toast.LENGTH_SHORT).show();
                     return;
@@ -57,7 +57,7 @@ public class PostNewEvent extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         currentPost[0] = dataSnapshot.getValue(Integer.class);
-                        firebase.getDatabase().getReference("post/currentPost").setValue(currentPost[0] + 1);
+                        FirebaseDatabase.getInstance().getReference("post/currentPost").setValue(currentPost[0] + 1);
                         lastWork(currentPost[0]);
                     }
 
@@ -66,7 +66,7 @@ public class PostNewEvent extends AppCompatActivity {
 
                     }
                 };
-                firebase.getDatabase().getReference("post/currentPost").addListenerForSingleValueEvent(valueEventListener);
+                FirebaseDatabase.getInstance().getReference("post/currentPost").addListenerForSingleValueEvent(valueEventListener);
             }
         });
 
@@ -95,8 +95,8 @@ public class PostNewEvent extends AppCompatActivity {
 
     public  void lastWork(Integer cur){
         post.postId = Integer.toString(cur);
-        firebase.getDatabase().getReference("post/posts/" + post.postId).setValue(post);
-        firebase.getDatabase().getReference("notification/" + post.bloodGroup).push().setValue("0+"  + post.postId);
+        FirebaseDatabase.getInstance().getReference("post/posts/" + post.postId).setValue(post);
+        FirebaseDatabase.getInstance().getReference("notification/" + post.bloodGroup).push().setValue("0+"  + post.postId);
         Toast.makeText(PostNewEvent.this, "Request posted", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);
         startActivity(intent);

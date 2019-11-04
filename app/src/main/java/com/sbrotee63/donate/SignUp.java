@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
     String cellNumber;
     String lastBloodDonation;
 
-    FirebaseInfo firebase;
+
 
     DatePickerDialog datePickerDialog;
     DatePicker datePicker;
@@ -41,7 +41,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        firebase = Welcome.firebase;
+
 
 
         findViewById(R.id.signup_button_signup).setOnClickListener(new View.OnClickListener() {
@@ -94,19 +94,19 @@ public class SignUp extends AppCompatActivity {
         if(!allFieldChecked()) return;
         String email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         String password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
-        firebase.getmAuth().createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
+       FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
         {
             public void onComplete(@NonNull Task <AuthResult> task)
             {
                 if(task.isSuccessful()){
 
-                    firebase.getmAuth().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(SignUp.this, "Email has been sent to this address. Please verify your email", Toast.LENGTH_LONG).show();
                                 Log.d("DONATE+", "createUserWithEmail: successful");
-                                FirebaseUser user = firebase.getmAuth().getCurrentUser();
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 String uid = user.getUid();
                                 User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -155,8 +155,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebase = Welcome.firebase;
-        if(firebase.isActiveUser()){
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
             Intent intent = new Intent(SignUp.this, NewsFeed.class);
             startActivity(intent);
         }

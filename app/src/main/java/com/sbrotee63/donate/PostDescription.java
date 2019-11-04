@@ -27,7 +27,7 @@ public class PostDescription extends AppCompatActivity {
         Intent intent = getIntent();
         Button acceptButton = (Button) findViewById(R.id.postdesc_button_accept);
         final String postId = intent.getStringExtra("postId");
-        firebase = Welcome.firebase;
+        firebase = new FirebaseInfo();
 
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override

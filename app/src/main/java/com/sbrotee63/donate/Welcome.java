@@ -29,7 +29,6 @@ public class Welcome extends AppCompatActivity {
     private static final int RC_SIGN_IN = 0;
     public GoogleSignInClient mGoogleSignInClient;
 
-    public static FirebaseInfo firebase;
 
 
     @Override
@@ -122,9 +121,7 @@ public class Welcome extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebase = new FirebaseInfo();
-        while(!firebase.isActive());
-        if(firebase.isActiveUser()){
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
             ValueEventListener valueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -135,30 +132,19 @@ public class Welcome extends AppCompatActivity {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             String notification = dataSnapshot.getValue(String.class);
-                            firebase.getDatabase().getReference("notification/" + firebase.getUser().getUid()).push().setValue(notification);
+                            FirebaseDatabase.getInstance().getReference("notification/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(notification);
                         }
 
                         @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
                         @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) { }
                         @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
                         @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
+                        public void onCancelled(@NonNull DatabaseError databaseError) { }
                     };
-                    firebase.getDatabase().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
+                    FirebaseDatabase.getInstance().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
                 }
 
                 @Override
@@ -166,7 +152,7 @@ public class Welcome extends AppCompatActivity {
 
                 }
             };
-            firebase.getDatabase().getReference("user/info/" + firebase.getUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
+            FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
             Intent intent = new Intent(Welcome.this, NewsFeed.class);
             startActivity(intent);
         }

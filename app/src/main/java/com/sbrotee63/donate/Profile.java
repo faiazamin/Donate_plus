@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,15 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile extends AppCompatActivity {
 
 
-    FirebaseInfo firebase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        firebase = Welcome.firebase;
+
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
@@ -91,7 +90,7 @@ public class Profile extends AppCompatActivity {
             };
 
 
-        firebase.getDatabase().getReference("user/info/" + firebase.getUser().getUid()).addValueEventListener(postListener);
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +99,7 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        firebase.getDatabase().getReference("user/info/" + firebase.getUser().getUid()).addValueEventListener(postListener);
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.profile_button_seeposts).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +111,7 @@ public class Profile extends AppCompatActivity {
     }
 
     void setup(User user){
-        ((Button) findViewById(R.id.profile_name)).setText(user.name);
+        ((TextInputEditText) findViewById(R.id.profile_name)).setText(user.name);
         ((Button) findViewById(R.id.profile_email)).setText(user.email);
         ((Button) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
         ((Button) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);

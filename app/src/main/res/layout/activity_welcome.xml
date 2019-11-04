@@ -36,11 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/solid_button"
+            app:backgroundTint="@color/colorPrimary"
             android:text="Sign Up"
-            android:textColor="#ffff"
             android:textSize="24sp"
-            />
+            ></com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
     <LinearLayout
@@ -54,16 +53,15 @@
         android:layout_weight="1"
         android:layout_gravity="center_horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/welcome_button_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/solid_button"
+            app:backgroundTint="@color/colorPrimary"
             android:text="Log In"
-            android:textColor="#ffff"
             android:textSize="24sp"
-            />
+            ></com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
 </LinearLayout>

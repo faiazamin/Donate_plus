@@ -36,4 +36,8 @@ public class FirebaseInfo {
         return mAuth;
     }
 
+    public void signOut(){
+        mAuth.signOut();
+    }
+
 }

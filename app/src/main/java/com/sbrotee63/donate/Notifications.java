@@ -24,14 +24,14 @@ public class Notifications extends AppCompatActivity {
 
     private ArrayList<String> notifications = new ArrayList<>();
 
-    FirebaseInfo firebase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
-        firebase = Welcome.firebase;
+
 
         // Navigation Buttons added
 
@@ -94,7 +94,7 @@ public class Notifications extends AppCompatActivity {
 
             }
         };
-        firebase.getDatabase().getReference("notification/" + firebase.getUser().getUid()).limitToLast(30).addValueEventListener(valueEventListener);
+        FirebaseDatabase.getInstance().getReference("notification/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).limitToLast(30).addValueEventListener(valueEventListener);
 
         //initRecyclerView();
     }
