@@ -120,24 +120,15 @@ public class ShowPostLocation extends FragmentActivity {
         Log.d("map.","init : initializing");
         EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
 
-        searchbar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        findViewById(R.id.postlocation_button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView searchbar, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH
-                        ||actionId == EditorInfo.IME_ACTION_DONE
-                        || event.getAction() == KeyEvent.KEYCODE_ENTER
-                        || event.getAction() == KeyEvent.ACTION_DOWN
-                        || actionId == EditorInfo.IME_ACTION_NEXT
-                        || actionId == EditorInfo.IME_ACTION_GO
-                        || actionId == EditorInfo.IME_ACTION_SEND
-                ){
-                    Log.d("map","Something happened. ");
+            public void onClick(View v) {
+                Log.d("map","Something happened. ");
 
-                    geoLocat();
-                }
-                return false;
+                geoLocat();
             }
         });
+
          findViewById(R.id.ic_gps).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +142,7 @@ public class ShowPostLocation extends FragmentActivity {
 
     private void geoLocat(){
 
-        EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
+        EditText searchbar =  findViewById(R.id.postlocation_searchbar);
         String searchstring = searchbar.getText().toString();
         Geocoder geocoder = new Geocoder(this);
         List<Address> list = new ArrayList<>();
@@ -234,9 +225,9 @@ public class ShowPostLocation extends FragmentActivity {
                                         Log.d("map", "initMap invoked");
 
                                         if (mLocationPermission) {
-                                            if(flag.equals("post")){
+                                            if(flag!= null){
                                                 showPostLocation();
-                                                Toast.makeText(ShowPostLocation.this,location, 0).show();
+                                                Toast.makeText(ShowPostLocation.this,"location",Toast.LENGTH_SHORT) .show();
                                             }else {
                                                 getDeviceLocation();
                                             }
@@ -264,3 +255,39 @@ public class ShowPostLocation extends FragmentActivity {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*searchbar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView searchbar, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        ||actionId == EditorInfo.IME_ACTION_DONE
+                        || event.getAction() == KeyEvent.KEYCODE_ENTER
+                        || event.getAction() == KeyEvent.ACTION_DOWN
+                        || actionId == EditorInfo.IME_ACTION_NEXT
+                        || actionId == EditorInfo.IME_ACTION_GO
+                        || actionId == EditorInfo.IME_ACTION_SEND
+                ){
+                    Log.d("map","Something happened. ");
+
+                    geoLocat();
+                }
+                return false;
+            }
+        });*/
