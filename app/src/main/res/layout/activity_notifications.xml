@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:weightSum="5"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/feed_button_feed"

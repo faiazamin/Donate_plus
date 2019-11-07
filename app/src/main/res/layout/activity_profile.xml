@@ -91,7 +91,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -105,6 +105,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
                         android:text="Name"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
@@ -117,6 +119,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:id="@+id/profile_name"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
@@ -130,7 +134,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -141,12 +145,13 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/solid_button"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:text="E-mail"
-                        android:textColor="#FFFFFF" />
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -155,12 +160,14 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:id="@+id/profile_email"
-                        />
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -170,7 +177,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -181,12 +188,12 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/solid_button"
-                        android:text="Blood Group"
-                        android:textColor="#FFFFFF" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Blood Group"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -195,12 +202,12 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:id="@+id/profile_bloodgroup"
-                        />
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -210,7 +217,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -221,12 +228,13 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/solid_button"
                         android:text="Date of Birth"
-                        android:textColor="#FFFFFF" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -235,12 +243,14 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:id="@+id/profile_dateofbirth"
-                        />
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -250,7 +260,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -261,12 +271,13 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/solid_button"
                         android:text="Cell Number"
-                        android:textColor="#FFFFFF" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -275,12 +286,14 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:id="@+id/profile_cellno"
-                        />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -290,7 +303,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -301,12 +314,12 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/solid_button"
                         android:text="Address"
-                        android:textColor="#FFFFFF" />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary" ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -315,12 +328,14 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:id="@+id/profile_address"
-                        />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -330,7 +345,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:weightSum="6"
                 android:orientation="horizontal"
                 >
@@ -341,12 +356,12 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/solid_button"
-                        android:text="Last Blood Donation"
-                        android:textColor="#FFFFFF" />
+                        android:text="Last Donation"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary" ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -355,12 +370,14 @@
                     android:layout_gravity="center"
                     >
 
-                    <Button
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:id="@+id/profile_lastblooddonation"
-                        />
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -377,14 +394,13 @@
                 android:layout_gravity="center_horizontal"
                 >
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/profile_button_seeposts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:background="@drawable/solid_button"
+                    style="@style/StyleButton"
                     android:text="See Your Posts"
-                    android:textColor="#FFFFFF"
                     android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout

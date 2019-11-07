@@ -22,11 +22,11 @@
 
 
     <style name="StyleButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
     </style>
     <style name="StyleTextButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
 </resources>

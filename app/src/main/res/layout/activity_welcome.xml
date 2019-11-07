@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            app:backgroundTint="@color/colorPrimary"
+            style="@style/StyleButton"
             android:text="Sign Up"
             android:textSize="24sp"
             ></com.google.android.material.button.MaterialButton>
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            app:backgroundTint="@color/colorPrimary"
+            style="@style/StyleButton"
             android:text="Log In"
             android:textSize="24sp"
             ></com.google.android.material.button.MaterialButton>
