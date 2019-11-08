@@ -61,7 +61,6 @@
         android:layout_height="wrap_content"
         style="@style/StyleButton"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimary"
         android:text="Log In">
     </com.google.android.material.button.MaterialButton>
 

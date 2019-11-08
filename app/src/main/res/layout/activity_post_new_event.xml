@@ -16,24 +16,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/logo" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 >
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="@string/postdescription_textview_postform"
-                    android:textSize="20dp"
+                    android:text="Post New Event"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    android:textSize="32dp"
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout

@@ -15,8 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:background="@drawable/textview_border_not_curve">
+            >
 
                 <TextView
                     android:id="@+id/notifications_text_notifications"
@@ -24,7 +23,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

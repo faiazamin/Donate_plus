@@ -25,13 +25,13 @@
             android:layout_gravity="center"
             android:layout_weight="1">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scrollbarSize="4dp"
+
                 android:text="Sign Up"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="36sp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="32sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

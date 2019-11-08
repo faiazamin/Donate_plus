@@ -66,11 +66,11 @@
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/setting_button_logout"
-        android:background="@drawable/solid_button"
+        style="@style/StyleButton"
         android:text="LOG OUT"
         android:layout_gravity="center_horizontal"
         android:textColor="#FFFFFF" />

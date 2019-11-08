@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 public class Profile extends AppCompatActivity {
 
@@ -112,12 +115,12 @@ public class Profile extends AppCompatActivity {
 
     void setup(User user){
         ((TextInputEditText) findViewById(R.id.profile_name)).setText(user.name);
-        ((Button) findViewById(R.id.profile_email)).setText(user.email);
-        ((Button) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
-        ((Button) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);
-        ((Button) findViewById(R.id.profile_address)).setText(user.address);
-        ((Button) findViewById(R.id.profile_cellno)).setText(user.cellNo);
-        ((Button) findViewById(R.id.profile_lastblooddonation)).setText(user.lastBloodDonation);
+        ((TextInputEditText) findViewById(R.id.profile_email)).setText(user.email);
+        ((TextInputEditText) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
+        ((TextInputEditText) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);
+        ((TextInputEditText) findViewById(R.id.profile_address)).setText(user.address);
+        ((TextInputEditText) findViewById(R.id.profile_cellno)).setText(user.cellNo);
+        ((TextInputEditText) findViewById(R.id.profile_lastblooddonation)).setText(user.lastBloodDonation);
     }
 
 
