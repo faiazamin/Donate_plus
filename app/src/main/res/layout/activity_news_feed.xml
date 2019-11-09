@@ -13,27 +13,28 @@
         android:layout_width="match_parent"
         android:weightSum="5"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        >
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/feed_button_feed"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="1dp"
             app:backgroundTint="@color/colorPrimaryDark"
             app:icon="@drawable/icon_feed"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:id="@+id/feed_button_profile"
             android:layout_weight="1"
-            android:layout_margin="2dp"
+            android:layout_margin="1dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_profile"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"
+            ></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -43,7 +44,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_notification"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -53,7 +54,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_hobb"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -63,15 +64,18 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_setting"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"
+            ></com.google.android.material.button.MaterialButton>
 
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/feed_button_request"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
+        app:cornerRadius="20dp"
         app:backgroundTint="@color/colorPrimary"
         android:text="Request for Blood"
         ></com.google.android.material.button.MaterialButton>
@@ -81,6 +85,6 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"></androidx.recyclerview.widget.RecyclerView>
+        android:padding="2dp"></androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

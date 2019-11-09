@@ -22,7 +22,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_feed"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -32,7 +32,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimaryDark"
             app:icon="@drawable/icon_profile"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -42,7 +42,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_notification"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -52,7 +52,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_hobb"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
@@ -62,7 +62,7 @@
             android:layout_margin="2dp"
             app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/icon_setting"
-            app:iconSize="50dp"></com.google.android.material.button.MaterialButton>
+            app:iconSize="40dp"></com.google.android.material.button.MaterialButton>
 
     </LinearLayout>
 
@@ -372,11 +372,9 @@
                 android:layout_margin="20dp"
                 tools:ignore="Suspicious0dp"></LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:weightSum="6"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 >
 
@@ -384,28 +382,27 @@
                     android:id="@+id/profile_button_seeposts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
                     style="@style/StyleButton"
+                    app:cornerRadius="20dp"
                     android:text="See Your Posts"
                     android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:weightSum="6"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 >
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/profile_button_seeresponses"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
+                    android:layout_gravity="center_horizontal"
+                    app:cornerRadius="20dp"
                     style="@style/StyleButton"
                     android:text="See Your Responses"
-                    android:textSize="24sp" ></com.google.android.material.textfield.TextInputEditText>
+                    android:textSize="24sp" ></com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

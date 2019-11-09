@@ -11,13 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -38,31 +31,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="1"
             tools:ignore="Suspicious0dp"></LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
-                android:layout_gravity="center"
-                android:layout_weight="2">
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Name"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -72,11 +61,12 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signup_text_name"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    />
             </LinearLayout>
         </LinearLayout>
         \
@@ -84,26 +74,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
                     android:text="E-mail"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -113,38 +99,34 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signup_text_email"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:textSize="18sp" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Password"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -154,12 +136,11 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signup_password_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:ems="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
                     android:inputType="textPassword" />
             </LinearLayout>
         </LinearLayout>
@@ -167,25 +148,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Confirm Password"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -195,12 +173,11 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signup_password_confirmpassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:ems="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
                     android:inputType="textPassword" />
             </LinearLayout>
         </LinearLayout>
@@ -208,26 +185,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Blood Group"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -237,37 +211,33 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signup_text_bloodgroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4" />
+                    android:textColor="@color/colorPrimary" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Date of Birth"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -286,22 +256,23 @@
                     android:layout_gravity="center"
                     >
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/signup_text_dateofbirth"
-                        android:layout_weight="5"
+                        android:layout_weight="4"
                         android:hint="DD-MM-YYYY"
                         android:textAlignment="center"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"
+                        android:textColor="@color/colorPrimary"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/signup_button_deathofbirth"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:background="@drawable/solid_button"
-                        android:text="Pick"
+                        android:layout_weight="4"
+                        style="@style/StyleButton"
+                        android:text="Calendar"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -311,26 +282,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Cell Number"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -340,10 +307,11 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/singup_text_cellnumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimary"
                     android:layout_weight="4" />
             </LinearLayout>
         </LinearLayout>
@@ -351,26 +319,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Address"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -380,37 +344,34 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signup_text_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4" />
+                    android:layout_weight="4"
+                    android:textColor="@color/colorPrimary"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_weight="1"
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:weightSum="6">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textview_border"
+                    android:layout_height="wrap_content"
                     android:text="Last Blood Donation"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -429,107 +390,37 @@
                     android:layout_gravity="center"
                     >
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/signup_text_lastblooddonation"
                         android:layout_weight="5"
-                        android:text="DD-MM-YYYY"
-                        android:textAlignment="center"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/signup_button_datepicker"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:background="@drawable/solid_button"
-                        android:text="Pick"
-                        android:textSize="15dp" />
+                        style="@style/StyleButton"
+                        android:text="Map"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="6">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            >
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/signup_button_signup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/solid_button"
-                    android:text="SIGN UP"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
-        </LinearLayout>
+            android:layout_gravity="center"
+            style="@style/StyleButton"
+            android:text="Sign Up"
+            ></com.google.android.material.button.MaterialButton>
     </LinearLayout>
 </ScrollView>

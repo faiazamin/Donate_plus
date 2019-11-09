@@ -15,7 +15,7 @@
         android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="5"
-        app:srcCompat="@drawable/logo"
+
         />
 
     <LinearLayout

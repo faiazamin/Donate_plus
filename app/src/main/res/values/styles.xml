@@ -23,7 +23,8 @@
 
     <style name="StyleButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="cornerRadius">11dp</item>
     </style>
     <style name="StyleTextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">@color/textColorPrimary</item>
