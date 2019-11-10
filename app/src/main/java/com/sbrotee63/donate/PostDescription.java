@@ -18,9 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PostDescription extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
-    FirebaseDatabase database;
-    FirebaseUser user;
+    FirebaseInfo firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +27,26 @@ public class PostDescription extends AppCompatActivity {
         Intent intent = getIntent();
         Button acceptButton = (Button) findViewById(R.id.postdesc_button_accept);
         final String postId = intent.getStringExtra("postId");
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
+        firebase = new FirebaseInfo();
 
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database.getReference("post/response/" + postId).push().setValue(user.getUid());
+                firebase.getDatabase().getReference("post/response/" + postId).push().setValue(firebase.getUser().getUid());
                 // TODO add a notification for new response
             }
-        });;
+        });
 
 
-        Log.d("newTag", postId + "HERE I AM BRO");
+        findViewById(R.id.postdes_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostDescription.this, ShowPostLocation.class);
+                intent.putExtra("location", ((Button)findViewById(R.id.postdes_location)).getText().toString());
+                intent.putExtra("flag", "post");
+                startActivity(intent);
+            }
+        });
 
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -64,7 +68,7 @@ public class PostDescription extends AppCompatActivity {
             }
 
         };
-        database.getReference("post/posts/" + postId).addListenerForSingleValueEvent(valueEventListener);
+        firebase.getDatabase().getReference("post/posts/" + postId).addListenerForSingleValueEvent(valueEventListener);
 
     }
 }

@@ -90,7 +90,7 @@ public class RecyclerViewAdapterNotifications extends RecyclerView.Adapter<Recyc
             super(itemView);
             notification = itemView.findViewById(R.id.notifications_text_notifications);
 
-            parentLayout = itemView.findViewById(R.id.parent_layout);
+            parentLayout = itemView.findViewById(R.id.parent_layout_notification);
         }
 
         public void setText(String s) {

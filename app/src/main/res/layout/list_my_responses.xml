@@ -2,47 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parent_layout"
+    android:id="@+id/parent_layout_myresponses"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".NewsFeed">
+    tools:context=".MyResponses">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="1dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:weightSum="6"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/feed_lv_blood"
+                android:id="@+id/myresponses_lv_blood"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border_not_curve"
+                android:background="@drawable/textview_border"
                 android:layout_weight="4"
                 >
 
                 <TextView
-                    android:id="@+id/feed_text_blood"
+                    android:id="@+id/myresponses_text_blood"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#FFFFFF"
                     android:textSize="32sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/feed_lv_location"
+                android:id="@+id/myresponses_lv_location"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:background="@drawable/textview_border_not_curve"
+                android:background="@drawable/textview_border"
                 android:weightSum="2"
                 android:orientation="vertical">
 
@@ -52,12 +52,12 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/feed_text_location"
+                        android:id="@+id/myresponses_text_location"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
                         />
                 </LinearLayout>
 
@@ -67,12 +67,12 @@
                     android:layout_weight="1" >
 
                     <TextView
-                        android:id="@+id/feed_text_status"
+                        android:id="@+id/myresponses_text_status"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"/>
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"/>
                 </LinearLayout>
             </LinearLayout>
 

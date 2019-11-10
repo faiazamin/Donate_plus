@@ -27,10 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Welcome extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 0;
-    public FirebaseAuth mAuth;
-    public FirebaseUser currentUser;
     public GoogleSignInClient mGoogleSignInClient;
-
 
 
 
@@ -38,10 +35,8 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_welcome);
 
-        mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.welcome_button_signup).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,42 +121,28 @@ public class Welcome extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser() != null){
-
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
             ValueEventListener valueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    NewsFeed.user = dataSnapshot.getValue(User.class);
 
-                    Log.d("newTag", "GOT HIM");
+                    NewsFeed.user = dataSnapshot.getValue(User.class);
 
                     ChildEventListener childEventListener = new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             String notification = dataSnapshot.getValue(String.class);
-                            FirebaseDatabase.getInstance().getReference("notification/" + mAuth.getCurrentUser().getUid()).push().setValue(notification);
+                            FirebaseDatabase.getInstance().getReference("notification/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(notification);
                         }
 
                         @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
                         @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) { }
                         @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
                         @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
+                        public void onCancelled(@NonNull DatabaseError databaseError) { }
                     };
                     FirebaseDatabase.getInstance().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
                 }
@@ -171,8 +152,7 @@ public class Welcome extends AppCompatActivity {
 
                 }
             };
-            FirebaseDatabase.getInstance().getReference("user/info/" + mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
-
+            FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
             Intent intent = new Intent(Welcome.this, NewsFeed.class);
             startActivity(intent);
         }

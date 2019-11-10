@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,14 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 public class Profile extends AppCompatActivity {
-
-
-    FirebaseDatabase database;
-    FirebaseAuth mAuth;
-    FirebaseUser currentUser;
-
-
 
 
 
@@ -37,9 +34,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        currentUser = mAuth.getCurrentUser();
+
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
@@ -98,7 +93,7 @@ public class Profile extends AppCompatActivity {
             };
 
 
-            database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +102,7 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,13 +123,13 @@ public class Profile extends AppCompatActivity {
     }
 
     void setup(User user){
-        ((Button) findViewById(R.id.profile_name)).setText(user.name);
-        ((Button) findViewById(R.id.profile_email)).setText(user.email);
-        ((Button) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
-        ((Button) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);
-        ((Button) findViewById(R.id.profile_address)).setText(user.address);
-        ((Button) findViewById(R.id.profile_cellno)).setText(user.cellNo);
-        ((Button) findViewById(R.id.profile_lastblooddonation)).setText(user.lastBloodDonation);
+        ((TextInputEditText) findViewById(R.id.profile_name)).setText(user.name);
+        ((TextInputEditText) findViewById(R.id.profile_email)).setText(user.email);
+        ((TextInputEditText) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
+        ((TextInputEditText) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);
+        ((TextInputEditText) findViewById(R.id.profile_address)).setText(user.address);
+        ((TextInputEditText) findViewById(R.id.profile_cellno)).setText(user.cellNo);
+        ((TextInputEditText) findViewById(R.id.profile_lastblooddonation)).setText(user.lastBloodDonation);
     }
 
 

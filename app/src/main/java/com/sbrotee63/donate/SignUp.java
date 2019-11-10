@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
     String cellNumber;
     String lastBloodDonation;
 
-    private FirebaseAuth mAuth;
+
 
     DatePickerDialog datePickerDialog;
     DatePicker datePicker;
@@ -41,7 +41,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        mAuth = FirebaseAuth.getInstance();
+
 
 
         findViewById(R.id.signup_button_signup).setOnClickListener(new View.OnClickListener() {
@@ -94,26 +94,26 @@ public class SignUp extends AppCompatActivity {
         if(!allFieldChecked()) return;
         String email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         String password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
+       FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
         {
             public void onComplete(@NonNull Task <AuthResult> task)
             {
                 if(task.isSuccessful()){
 
-                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(SignUp.this, "Email has been sent to this address. Please verify your email", Toast.LENGTH_LONG).show();
                                 Log.d("DONATE+", "createUserWithEmail: successful");
-                                FirebaseUser user = mAuth.getCurrentUser();
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 String uid = user.getUid();
                                 User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 database.getReference("user/info/" + uid).setValue( userObj );
                                 Intent intent = new Intent(SignUp.this, LogIn.class);
                                 startActivity(intent);
-                                // TODO : clear all area
+                                clear();
                             }
                             else{
                                 Toast.makeText(SignUp.this, "Error : Please try again", Toast.LENGTH_SHORT);
@@ -130,7 +130,6 @@ public class SignUp extends AppCompatActivity {
     }
 
     private Boolean allFieldChecked(){
-        Log.d("newTag", "Came");
         name = ((EditText)findViewById(R.id.signup_text_name)).getText().toString().trim();
         email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
@@ -156,11 +155,22 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth != null){
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
             Intent intent = new Intent(SignUp.this, NewsFeed.class);
             startActivity(intent);
         }
+    }
+
+    void clear(){
+        ((EditText)findViewById(R.id.signup_text_name)).setText("");
+        ((EditText)findViewById(R.id.signup_text_email)).setText("");
+        ((EditText)findViewById(R.id.signup_password_password)).setText("");
+        ((EditText)findViewById(R.id.signup_password_confirmpassword)).setText("");
+        ((EditText)findViewById(R.id.signup_text_bloodgroup)).setText("");
+        ((EditText)findViewById(R.id.signup_text_dateofbirth)).setText("");
+        ((EditText)findViewById(R.id.signup_text_address)).setText("");
+        ((EditText)findViewById(R.id.singup_text_cellnumber)).setText("");
+        ((EditText)findViewById(R.id.signup_text_lastblooddonation)).setText("");
     }
 
 }
