@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,11 +53,11 @@ public class PostDescription extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
-                ((Button)findViewById(R.id.postdes_bloodgroup)).setText(post.bloodGroup);
-                ((Button)findViewById(R.id.postdes_name)).setText(post.name);
-                ((Button)findViewById(R.id.postdes_location)).setText(post.location);
-                ((Button)findViewById(R.id.postdes_dateofbirth)).setText(post.dateOfBirth);
-                ((Button)findViewById(R.id.postdes_cellno)).setText(post.cellno);
+                ((TextInputEditText)findViewById(R.id.postdes_bloodgroup)).setText(post.bloodGroup);
+                ((TextInputEditText)findViewById(R.id.postdes_name)).setText(post.name);
+                ((TextInputEditText)findViewById(R.id.postdes_location)).setText(post.location);
+                ((TextInputEditText)findViewById(R.id.postdes_dateofbirth)).setText(post.dateOfBirth);
+                ((TextInputEditText)findViewById(R.id.postdes_cellno)).setText(post.cellno);
             }
 
 

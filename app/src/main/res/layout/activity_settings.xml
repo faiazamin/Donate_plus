@@ -69,10 +69,24 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/setting_button_change_profile"
+        style="@style/StyleButton"
+        android:text="Change Profile"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/textColorPrimary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"></LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/setting_button_logout"
         style="@style/StyleButton"
         android:text="LOG OUT"
         android:layout_gravity="center_horizontal"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/textColorPrimary" />
 
 </LinearLayout>
