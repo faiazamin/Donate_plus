@@ -56,7 +56,9 @@
                         android:layout_height="wrap_content"
                         android:text="@string/postdescription_textview_name"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -72,6 +74,8 @@
                         android:textColor="@color/colorPrimary"
                         android:layout_weight="4"
                         android:id="@+id/postdes_name"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -95,6 +99,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:text="@string/postdescription_textview_bloodgroup"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -111,6 +117,8 @@
                         android:textColor="@color/colorPrimary"
                         android:layout_weight="4"
                         android:id="@+id/postdes_bloodgroup"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -135,6 +143,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:text="@string/postdescription_textview_location"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -151,6 +161,8 @@
                         android:textColor="@color/colorPrimary"
                         android:layout_weight="4"
                         android:id="@+id/postdes_location"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -174,6 +186,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:text="@string/postdescription_textview_phone"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -190,6 +204,8 @@
                         android:textColor="@color/colorPrimary"
                         android:layout_weight="4"
                         android:id="@+id/postdes_cellno"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -213,6 +229,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:text="@string/postdescription_textview_dob"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -229,6 +247,8 @@
                         android:textColor="@color/colorPrimary"
                         android:layout_weight="4"
                         android:id="@+id/postdes_dateofbirth"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </LinearLayout>

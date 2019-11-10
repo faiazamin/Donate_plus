@@ -12,7 +12,7 @@
         android:id="@+id/recyclerviewpeoplewhoresponded"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"></androidx.recyclerview.widget.RecyclerView>
+        android:padding="2dp"></androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

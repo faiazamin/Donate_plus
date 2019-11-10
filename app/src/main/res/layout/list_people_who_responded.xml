@@ -5,27 +5,26 @@
     android:id="@+id/parent_layout_people_who_responded"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Notifications">
+    tools:context=".PeopleWhoResponded">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/textview_border">
+            android:layout_height="match_parent"
+            android:background="@drawable/textview_border_not_curve">
 
             <TextView
                 android:id="@+id/peoplewhoresponded_text_responses"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
     </LinearLayout>

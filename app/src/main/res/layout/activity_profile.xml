@@ -101,6 +101,8 @@
                         android:layout_height="match_parent"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:text="Name"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
@@ -116,6 +118,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:id="@+id/profile_name"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
@@ -140,6 +144,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:text="E-mail"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
@@ -156,6 +162,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:id="@+id/profile_email"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
@@ -178,6 +186,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textStyle="bold"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:textColor="@color/colorPrimary"
                         android:text="Blood Group"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
@@ -193,6 +203,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:id="@+id/profile_bloodgroup"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
@@ -220,6 +234,8 @@
                         android:text="Date of Birth"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
@@ -236,6 +252,8 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:id="@+id/profile_dateofbirth"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
@@ -263,6 +281,8 @@
                         android:text="Cell Number"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
@@ -278,6 +298,8 @@
                         android:layout_weight="4"
                         android:id="@+id/profile_cellno"
                         android:textStyle="bold"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:textColor="@color/colorPrimary"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
@@ -305,7 +327,9 @@
                         android:layout_height="match_parent"
                         android:text="Address"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimary" ></com.google.android.material.textfield.TextInputEditText>
+                        android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -321,6 +345,8 @@
                         android:id="@+id/profile_address"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>
@@ -347,7 +373,9 @@
                         android:layout_height="match_parent"
                         android:text="Last Donation"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimary" ></com.google.android.material.textfield.TextInputEditText>
+                        android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -363,6 +391,8 @@
                         android:id="@+id/profile_lastblooddonation"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         ></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
             </LinearLayout>

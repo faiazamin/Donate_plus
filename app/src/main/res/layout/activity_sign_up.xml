@@ -262,6 +262,7 @@
                         android:id="@+id/signup_text_dateofbirth"
                         android:layout_weight="4"
                         android:hint="DD-MM-YYYY"
+                        android:textColorHint="@color/colorPrimary"
                         android:textAlignment="center"
                         android:textSize="15sp"
                         android:textColor="@color/colorPrimary"/>
@@ -311,8 +312,7 @@
                     android:id="@+id/singup_text_cellnumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_weight="4" />
+                    android:textColor="@color/colorPrimary" />
             </LinearLayout>
         </LinearLayout>
 
@@ -348,7 +348,6 @@
                     android:id="@+id/signup_text_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
                     android:textColor="@color/colorPrimary"/>
             </LinearLayout>
         </LinearLayout>
@@ -415,12 +414,14 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp">
         </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup_button_signup"
+            style="@style/StyleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            style="@style/StyleButton"
-            android:text="Sign Up"
-            ></com.google.android.material.button.MaterialButton>
+            android:layout_gravity="center_horizontal"
+            android:text="Sign Up" />
+
     </LinearLayout>
 </ScrollView>
