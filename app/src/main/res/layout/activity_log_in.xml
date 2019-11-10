@@ -10,11 +10,11 @@
 
     <ImageView
         android:id="@+id/login_image_logo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/donate_plus"
          />
 
     <LinearLayout
