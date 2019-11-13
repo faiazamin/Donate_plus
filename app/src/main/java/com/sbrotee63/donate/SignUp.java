@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -88,6 +90,13 @@ public class SignUp extends AppCompatActivity {
 
             }
         });
+
+        Spinner mySpinner = (Spinner)findViewById(R.id.signup_text_bloodgroup);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SignUp.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bloodGroups));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
     }
 
     private void signUp(){
@@ -134,7 +143,7 @@ public class SignUp extends AppCompatActivity {
         email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
         confirmPassword = ((EditText)findViewById(R.id.signup_password_confirmpassword)).getText().toString().trim();
-        bloodGroup = ((EditText)findViewById(R.id.signup_text_bloodgroup)).getText().toString().trim();
+        bloodGroup = ((Spinner)findViewById(R.id.signup_text_bloodgroup)).getSelectedItem().toString().trim();
         dateOfBirth = ((EditText)findViewById(R.id.signup_text_dateofbirth)).getText().toString().trim();
         address = ((EditText)findViewById(R.id.signup_text_address)).getText().toString().trim();
         cellNumber = ((EditText)findViewById(R.id.singup_text_cellnumber)).getText().toString().trim();
@@ -166,7 +175,7 @@ public class SignUp extends AppCompatActivity {
         ((EditText)findViewById(R.id.signup_text_email)).setText("");
         ((EditText)findViewById(R.id.signup_password_password)).setText("");
         ((EditText)findViewById(R.id.signup_password_confirmpassword)).setText("");
-        ((EditText)findViewById(R.id.signup_text_bloodgroup)).setText("");
+        /*((Spinner)findViewById(R.id.signup_text_bloodgroup)).setText("");*/
         ((EditText)findViewById(R.id.signup_text_dateofbirth)).setText("");
         ((EditText)findViewById(R.id.signup_text_address)).setText("");
         ((EditText)findViewById(R.id.singup_text_cellnumber)).setText("");

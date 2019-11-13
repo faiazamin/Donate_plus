@@ -12,4 +12,16 @@
     <string name="postdescription_button_accept">Accept</string>
     <string name="title_activity_post_info">post_info</string>
     <string name="title_activity_show_post_location">ShowPostLocation</string>
+
+    <string-array name="bloodGroups">
+        <item>A+</item>
+        <item>B+</item>
+        <item>AB+</item>
+        <item>O+</item>
+        <item>A-</item>
+        <item>B-</item>
+        <item>AB-</item>
+        <item>O-</item>
+        <item>H+</item>
+    </string-array>
 </resources>
