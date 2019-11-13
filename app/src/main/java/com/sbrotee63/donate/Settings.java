@@ -6,13 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Settings extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_settings);
+
 
         Button newsfeedButton = (Button) findViewById(R.id.feed_button_feed);
 
@@ -59,8 +66,10 @@ public class Settings extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Settings.this, ShowPostLocation.class);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Settings.this, Welcome.class);
                 startActivity(intent);
+                Toast.makeText(Settings.this, "Logged out", Toast.LENGTH_LONG).show();
             }
         });
 

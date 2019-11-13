@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,7 +34,7 @@ public class SignUp extends AppCompatActivity {
     String cellNumber;
     String lastBloodDonation;
 
-    FirebaseInfo firebase;
+
 
     DatePickerDialog datePickerDialog;
     DatePicker datePicker;
@@ -41,7 +43,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        firebase = Welcome.firebase;
+
 
 
         findViewById(R.id.signup_button_signup).setOnClickListener(new View.OnClickListener() {
@@ -51,7 +53,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.signup_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.signup_button_dateofbirth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePicker(SignUp.this);
@@ -62,7 +64,7 @@ public class SignUp extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                        ((EditText)findViewById(R.id.signup_text_dateofbirth)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
@@ -70,7 +72,9 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.signup_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+
+
+        findViewById(R.id.signup_button_datepicker).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePicker(SignUp.this);
@@ -81,34 +85,40 @@ public class SignUp extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                        ((com.google.android.material.textfield.TextInputEditText)findViewById(R.id.signup_text_lastblooddonation)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
 
             }
         });
+
+        Spinner mySpinner = (Spinner)findViewById(R.id.signup_text_bloodgroup);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SignUp.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bloodGroups));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
     }
 
     private void signUp(){
         if(!allFieldChecked()) return;
         String email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         String password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
-        firebase.getmAuth().createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
+       FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener <AuthResult>()
         {
             public void onComplete(@NonNull Task <AuthResult> task)
             {
                 if(task.isSuccessful()){
 
-                    firebase.getmAuth().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(SignUp.this, "Email has been sent to this address. Please verify your email", Toast.LENGTH_LONG).show();
-                                Log.d("DONATE+", "createUserWithEmail: successful");
-                                FirebaseUser user = firebase.getmAuth().getCurrentUser();
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 String uid = user.getUid();
-                                User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
+                                User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation, FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 database.getReference("user/info/" + uid).setValue( userObj );
                                 Intent intent = new Intent(SignUp.this, LogIn.class);
@@ -134,7 +144,7 @@ public class SignUp extends AppCompatActivity {
         email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
         confirmPassword = ((EditText)findViewById(R.id.signup_password_confirmpassword)).getText().toString().trim();
-        bloodGroup = ((EditText)findViewById(R.id.signup_text_bloodgroup)).getText().toString().trim();
+        bloodGroup = ((Spinner)findViewById(R.id.signup_text_bloodgroup)).getSelectedItem().toString().trim();
         dateOfBirth = ((EditText)findViewById(R.id.signup_text_dateofbirth)).getText().toString().trim();
         address = ((EditText)findViewById(R.id.signup_text_address)).getText().toString().trim();
         cellNumber = ((EditText)findViewById(R.id.singup_text_cellnumber)).getText().toString().trim();
@@ -155,8 +165,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebase = Welcome.firebase;
-        if(firebase.isActiveUser()){
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
             Intent intent = new Intent(SignUp.this, NewsFeed.class);
             startActivity(intent);
         }
@@ -167,7 +176,7 @@ public class SignUp extends AppCompatActivity {
         ((EditText)findViewById(R.id.signup_text_email)).setText("");
         ((EditText)findViewById(R.id.signup_password_password)).setText("");
         ((EditText)findViewById(R.id.signup_password_confirmpassword)).setText("");
-        ((EditText)findViewById(R.id.signup_text_bloodgroup)).setText("");
+        /*((Spinner)findViewById(R.id.signup_text_bloodgroup)).setText("");*/
         ((EditText)findViewById(R.id.signup_text_dateofbirth)).setText("");
         ((EditText)findViewById(R.id.signup_text_address)).setText("");
         ((EditText)findViewById(R.id.singup_text_cellnumber)).setText("");

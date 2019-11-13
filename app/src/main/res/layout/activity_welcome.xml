@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FEF9C2"
     android:weightSum="10"
     tools:context=".Welcome">
 
@@ -16,22 +15,15 @@
         android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="5"
-        app:srcCompat="@drawable/logo"
+        android:src="@drawable/donate_plus"
         />
 
-
-    <TextView
-        android:id="@+id/welcome_text_welcome"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="2"
-        android:text="Welcome to Donate+, an app made with a goal of making the process of donating blood easier for everyone in emergency situations."
-        android:textColor="#9DC944"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:layout_weight="1">
 
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -39,16 +31,14 @@
         android:layout_weight="1"
         android:layout_gravity="center_horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/welcome_button_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/solid_button"
+            style="@style/StyleButton"
             android:text="Sign Up"
-            android:textColor="#ffff"
-            android:textSize="24sp"
-            />
+            ></com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
     <LinearLayout
@@ -62,16 +52,14 @@
         android:layout_weight="1"
         android:layout_gravity="center_horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/welcome_button_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/solid_button"
+            style="@style/StyleButton"
             android:text="Log In"
-            android:textColor="#ffff"
-            android:textSize="24sp"
-            />
+            ></com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
 </LinearLayout>

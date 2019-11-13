@@ -46,11 +46,11 @@ public class RecyclerViewAdapterNotifications extends RecyclerView.Adapter<Recyc
         }
         if(notifications.get(position).charAt(1) == '+'){
             // normal post notification
-            holder.notification.setText("New request for " + NewsFeed.user.bloodGroup + " has arrived");
+            holder.notification.setText("New request for " + Notifications.user.bloodGroup + " has arrived");
         }
         else if(notifications.get(position).charAt(1) == '*'){
             // urgent repost notification
-            holder.notification.setText("New request for " + NewsFeed.user.bloodGroup + " has arrived");
+            holder.notification.setText("New request for " + Notifications.user.bloodGroup + " has arrived");
         }
         else if(notifications.get(position).charAt(1) == '-'){
             // response notification
@@ -90,7 +90,7 @@ public class RecyclerViewAdapterNotifications extends RecyclerView.Adapter<Recyc
             super(itemView);
             notification = itemView.findViewById(R.id.notifications_text_notifications);
 
-            parentLayout = itemView.findViewById(R.id.parent_layout);
+            parentLayout = itemView.findViewById(R.id.parent_layout_notification);
         }
 
         public void setText(String s) {

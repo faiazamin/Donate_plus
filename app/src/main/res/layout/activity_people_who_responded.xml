@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".PeopleWhoResponded"
     android:orientation="vertical"
-    tools:context=".MyPosts">
+    >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewmyposts"
+        android:id="@+id/recyclerviewpeoplewhoresponded"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="2dp"></androidx.recyclerview.widget.RecyclerView>
+
 
 </LinearLayout>

@@ -29,7 +29,6 @@ public class Welcome extends AppCompatActivity {
     private static final int RC_SIGN_IN = 0;
     public GoogleSignInClient mGoogleSignInClient;
 
-    public static FirebaseInfo firebase;
 
 
     @Override
@@ -122,51 +121,7 @@ public class Welcome extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebase = new FirebaseInfo();
-        while(!firebase.isActive());
-        if(firebase.isActiveUser()){
-            ValueEventListener valueEventListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    NewsFeed.user = dataSnapshot.getValue(User.class);
-
-                    ChildEventListener childEventListener = new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            String notification = dataSnapshot.getValue(String.class);
-                            firebase.getDatabase().getReference("notification/" + firebase.getUser().getUid()).push().setValue(notification);
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    };
-                    firebase.getDatabase().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            };
-            firebase.getDatabase().getReference("user/info/" + firebase.getUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
             Intent intent = new Intent(Welcome.this, NewsFeed.class);
             startActivity(intent);
         }
