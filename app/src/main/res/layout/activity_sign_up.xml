@@ -211,11 +211,11 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_text_bloodgroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/colorPrimary" />
+                    <Spinner
+                        android:id="@+id/signup_text_bloodgroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
             </LinearLayout>
         </LinearLayout>
 

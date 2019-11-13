@@ -8,9 +8,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,11 @@ public class PostNewEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_new_event);
+        Spinner mySpinner = (Spinner)findViewById(R.id.post_bloodgroup);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(PostNewEvent.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bloodGroups));
 
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
 
 
 
@@ -43,7 +49,7 @@ public class PostNewEvent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 post = new Post( ((EditText)findViewById(R.id.post_name)).getText().toString(),
-                        ((EditText)findViewById(R.id.post_bloodgroup)).getText().toString(),
+                        ((Spinner)findViewById(R.id.post_bloodgroup)).getSelectedItem().toString(),
                         ((EditText)findViewById(R.id.post_location)).getText().toString(),
                         ((EditText)findViewById(R.id.post_dateofrequirement)).getText().toString(),
                         ((EditText)findViewById(R.id.post_cellno)).getText().toString(),
