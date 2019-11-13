@@ -161,7 +161,6 @@ public class NewsFeed extends AppCompatActivity {
                 }
             };
         FirebaseDatabase.getInstance().getReference("post/posts").addValueEventListener(postListener);
-
             //initRecyclerView();
         }
 

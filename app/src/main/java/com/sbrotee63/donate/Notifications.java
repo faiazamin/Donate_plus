@@ -24,13 +24,27 @@ public class Notifications extends AppCompatActivity {
 
     private ArrayList<String> notifications = new ArrayList<>();
 
-
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
+
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(valueEventListener);
 
 
         // Navigation Buttons added
@@ -77,6 +91,22 @@ public class Notifications extends AppCompatActivity {
             }
         });
 
+        ValueEventListener valueEventListener1 =  new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                bg(user);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(valueEventListener1);
+    }
+
+    private void bg(User user){
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,9 +124,7 @@ public class Notifications extends AppCompatActivity {
 
             }
         };
-        FirebaseDatabase.getInstance().getReference("notification/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).limitToLast(30).addValueEventListener(valueEventListener);
-
-        //initRecyclerView();
+        FirebaseDatabase.getInstance().getReference("notification/" + user.bloodGroup).addValueEventListener(valueEventListener);
     }
 
     private void initRecyclerView()

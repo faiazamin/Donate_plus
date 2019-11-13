@@ -46,11 +46,11 @@ public class RecyclerViewAdapterNotifications extends RecyclerView.Adapter<Recyc
         }
         if(notifications.get(position).charAt(1) == '+'){
             // normal post notification
-            holder.notification.setText("New request for " + NewsFeed.user.bloodGroup + " has arrived");
+            holder.notification.setText("New request for " + Notifications.user.bloodGroup + " has arrived");
         }
         else if(notifications.get(position).charAt(1) == '*'){
             // urgent repost notification
-            holder.notification.setText("New request for " + NewsFeed.user.bloodGroup + " has arrived");
+            holder.notification.setText("New request for " + Notifications.user.bloodGroup + " has arrived");
         }
         else if(notifications.get(position).charAt(1) == '-'){
             // response notification

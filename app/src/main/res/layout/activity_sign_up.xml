@@ -268,13 +268,13 @@
                         android:textColor="@color/colorPrimary"/>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/signup_button_deathofbirth"
+                        android:id="@+id/signup_button_dateofbirth"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         style="@style/StyleButton"
                         android:text="Calendar"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -393,17 +393,21 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/signup_text_lastblooddonation"
-                        android:layout_weight="5"
-                        android:textSize="15sp"/>
+                        android:layout_weight="4"
+                        android:hint="DD-MM-YYYY"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textAlignment="center"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorPrimary"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/signup_button_datepicker"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         style="@style/StyleButton"
-                        android:text="Map"
-                        android:textSize="15sp" />
+                        android:text="Calendar"
+                        android:textSize="13dp" />
 
                 </LinearLayout>
             </LinearLayout>

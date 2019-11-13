@@ -61,6 +61,11 @@ public class LogIn extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
+
+            if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                return;
+            }
+
             Intent intent = new Intent(LogIn.this, NewsFeed.class);
             startActivity(intent);
         }

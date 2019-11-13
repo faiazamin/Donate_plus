@@ -111,12 +111,20 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        database.getReference("user/info/" + currentUser.getUid()).addValueEventListener(postListener);
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.profile_button_seeposts).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, MyPosts.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.profile_button_seeresponses).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, MyResponses.class);
                 startActivity(intent);
             }
         });

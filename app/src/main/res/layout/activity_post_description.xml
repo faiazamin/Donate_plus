@@ -142,28 +142,37 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
-                        android:text="@string/postdescription_textview_location"
+                        android:text="Location"
                         android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        />
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
+                    android:weightSum="8"
+                    android:orientation="horizontal"
                     android:layout_gravity="center"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimary"
-                        android:layout_weight="4"
                         android:id="@+id/postdes_location"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        />
+                        android:layout_weight="4"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textAlignment="center"
+                        android:textSize="15dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/postdesc_button_location"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        style="@style/StyleButton"
+                        android:layout_weight="4"
+                        android:text="Map"
+                        android:textSize="15dp" />
+
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -287,6 +296,26 @@
                     android:layout_height="wrap_content"
                     style="@style/StyleButton"
                     android:text="Notify">
+                </com.google.android.material.button.MaterialButton>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                >
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/postdesc_button_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StyleButton"
+                    android:text="Delete">
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
 

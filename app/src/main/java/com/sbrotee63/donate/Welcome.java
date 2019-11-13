@@ -122,37 +122,6 @@ public class Welcome extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            ValueEventListener valueEventListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    NewsFeed.user = dataSnapshot.getValue(User.class);
-
-                    ChildEventListener childEventListener = new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            String notification = dataSnapshot.getValue(String.class);
-                            FirebaseDatabase.getInstance().getReference("notification/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(notification);
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) { }
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) { }
-                    };
-                    FirebaseDatabase.getInstance().getReference("notification/" + NewsFeed.user.bloodGroup).addChildEventListener(childEventListener);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            };
-            FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(valueEventListener);
             Intent intent = new Intent(Welcome.this, NewsFeed.class);
             startActivity(intent);
         }

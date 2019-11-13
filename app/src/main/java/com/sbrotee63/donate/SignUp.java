@@ -53,7 +53,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.signup_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.signup_button_dateofbirth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePicker(SignUp.this);
@@ -64,7 +64,7 @@ public class SignUp extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                        ((EditText)findViewById(R.id.signup_text_dateofbirth)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
@@ -72,7 +72,9 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.signup_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+
+
+        findViewById(R.id.signup_button_datepicker).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePicker(SignUp.this);
@@ -83,7 +85,7 @@ public class SignUp extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                        ((com.google.android.material.textfield.TextInputEditText)findViewById(R.id.signup_text_lastblooddonation)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
@@ -114,10 +116,9 @@ public class SignUp extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(SignUp.this, "Email has been sent to this address. Please verify your email", Toast.LENGTH_LONG).show();
-                                Log.d("DONATE+", "createUserWithEmail: successful");
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 String uid = user.getUid();
-                                User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
+                                User userObj = new User(name, ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim(), bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation, FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 database.getReference("user/info/" + uid).setValue( userObj );
                                 Intent intent = new Intent(SignUp.this, LogIn.class);

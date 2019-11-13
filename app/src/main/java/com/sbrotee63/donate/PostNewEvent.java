@@ -64,7 +64,7 @@ public class PostNewEvent extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         currentPost[0] = dataSnapshot.getValue(Integer.class);
                         FirebaseDatabase.getInstance().getReference("post/currentPost").setValue(currentPost[0] + 1);
-                        lastWork(currentPost[0]);
+                        lastWork(currentPost[0], post);
                     }
 
                     @Override
@@ -81,13 +81,13 @@ public class PostNewEvent extends AppCompatActivity {
             public void onClick(View view) {
                 datePicker = new DatePicker(PostNewEvent.this);
                 int currentYear = datePicker.getYear();
-                int currentMonth = (datePicker.getMonth())+1;
+                int currentMonth = (datePicker.getMonth());
                 int currentDay = datePicker.getDayOfMonth();
 
                 datePickerDialog = new DatePickerDialog(PostNewEvent.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+"-"+year);
+                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+month+1+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
@@ -99,9 +99,10 @@ public class PostNewEvent extends AppCompatActivity {
 
     }
 
-    public  void lastWork(Integer cur){
+    public  void lastWork(Integer cur, Post post){
         post.postId = Integer.toString(cur);
         FirebaseDatabase.getInstance().getReference("post/posts/" + post.postId).setValue(post);
+        FirebaseDatabase.getInstance().getReference("post/userPosts/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/"+ post.postId).setValue(post);
         FirebaseDatabase.getInstance().getReference("notification/" + post.bloodGroup).push().setValue("0+"  + post.postId);
         Toast.makeText(PostNewEvent.this, "Request posted", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(PostNewEvent.this, NewsFeed.class);

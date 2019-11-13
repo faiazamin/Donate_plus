@@ -2,6 +2,7 @@ package com.sbrotee63.donate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,10 +21,12 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
     private static final String TAG = "RecyclerViewAdapterResponses";
 
     private ArrayList<String> responses = new ArrayList<>();
+    private ArrayList<String> numbers = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapterPeopleWhoResponded(Context context, ArrayList<String> aResponses) {
+    public RecyclerViewAdapterPeopleWhoResponded(Context context, ArrayList<String> aResponses, ArrayList<String> aNumbers) {
         responses = aResponses;
+        numbers = aNumbers;
         mContext = context;
     }
 
@@ -36,18 +40,16 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //Log.d(TAG, "onBindViewHolder: called.");
-
+        holder.response.setText(responses.get(position));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Log.d(TAG, "onClick: clicked on: " + responses.get(position));
 
-                Toast.makeText(mContext, responses.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Calling " + responses.get(position), Toast.LENGTH_SHORT).show();
+                dialContactPhone(numbers.get(position));
 
-                Intent intent = new Intent(mContext, PostDescription.class);
-                intent.putExtra("notification", responses.get(position));
-                mContext.startActivity(intent);
             }
         });
     }
@@ -75,6 +77,9 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
 
         public void setText(String s) {
         }
+    }
+    private void dialContactPhone(final String phoneNumber) {
+        mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
     }
 }
 
