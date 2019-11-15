@@ -55,7 +55,7 @@ public class ShowPostLocation extends FragmentActivity {
 
     String flag;
     String location;
-    //private EditText searchbar = (EditText) findViewById(R.id.postlocation_searchbar);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,39 +63,41 @@ public class ShowPostLocation extends FragmentActivity {
         setContentView(R.layout.activity_show_post_location);
         flag = getIntent().getStringExtra("flag");
         location = getIntent().getStringExtra("location");
-
+        Toast.makeText(this, flag, Toast.LENGTH_SHORT).show();
+        Log.d("mapFaiaz", "I am here");
         getLocationPermission();
-
     }
 
     private void getLocationPermission(){
         String[] permissions ={
                 Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION        } ;
-        Log.d("map","getLocationPermission invoked");
+        Log.d("faiaz","getLocationPermission invoked");
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),permissions[0]) == PackageManager.PERMISSION_GRANTED){
-            Log.d("map",permissions[0]);
+            Log.d("faiaz",permissions[0]);
             if(ContextCompat.checkSelfPermission(this.getApplicationContext(),permissions[1]) == PackageManager.PERMISSION_GRANTED){
-                Log.d("map",permissions[1]);
+                Log.d("faiaz",permissions[1]);
                 mLocationPermission = true;
+                Toast.makeText(this, "true", Toast.LENGTH_SHORT).show();
                 initMap();
             }
             else{
                 ActivityCompat.requestPermissions(this,
                         permissions,
                         LOCATION_PERMISSION);
-                Log.d("map",permissions[1]+" revoked");
+                Log.d("faiaz",permissions[1]+" revoked");
             }
         }
         else{
             ActivityCompat.requestPermissions(this,
                     permissions,
                     LOCATION_PERMISSION);
-            Log.d("map",permissions[0]+" revoked");
+            Log.d("faiaz",permissions[0]+" revoked");
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Toast.makeText(this, "onRequestPermissionsResult", Toast.LENGTH_SHORT).show();
         mLocationPermission = false;
         switch (requestCode){
             case LOCATION_PERMISSION: {
@@ -103,12 +105,13 @@ public class ShowPostLocation extends FragmentActivity {
                     for(int i = 0; i < grantResults.length; ++i) {
                         if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
                             mLocationPermission = false;
+                            Toast.makeText(this, permissions[i]+"****"+i, Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
 
                     mLocationPermission = true;
-                    Log.d("map","onRequestPermissionsResult invoked");
+                    Log.d("faiaz","onRequestPermissionsResult invoked");
                     initMap();
                 }
             }
@@ -117,13 +120,13 @@ public class ShowPostLocation extends FragmentActivity {
     }
 
     private void init(){
-        Log.d("map.","init : initializing");
+        Log.d("faiaz.","init : initializing");
 
 
         findViewById(R.id.postlocation_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("map","Something happened. ");
+                Log.d("faiaz","Something happened. ");
 
                 geoLocat();
             }
@@ -149,11 +152,11 @@ public class ShowPostLocation extends FragmentActivity {
         try{
             list = geocoder.getFromLocationName(searchstring,1);
         }catch (IOException e){
-            Log.d("map","IOexception : "+e.getMessage());
+            Log.d("faiaz","IOexception : "+e.getMessage());
         }
         if(list.size()>0){
             Address address = list.get(0);
-            Log.d("map","Found new location "+address.toString()+".");
+            Log.d("faiaz","Found new location "+address.toString()+".");
             Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
         }
@@ -168,18 +171,18 @@ public class ShowPostLocation extends FragmentActivity {
         try{
             list = geocoder.getFromLocationName(searchstring,1);
         }catch (IOException e){
-            Log.d("map","IOexception : "+e.getMessage());
+            Log.d("faiaz","IOexception : "+e.getMessage());
         }
         if(list.size()>0){
             Address address = list.get(0);
-            Log.d("map","Found new location "+address.toString()+".");
+            Log.d("faiaz","Found new location "+address.toString()+".");
             Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
         }
     }
     private void getDeviceLocation() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        Log.d("map", "getDeviceLocation found");
+        Log.d("faiaz", "getDeviceLocation found");
         try {
             if (mLocationPermission) {
                 Task location = fusedLocationProviderClient.getLastLocation();
@@ -187,34 +190,35 @@ public class ShowPostLocation extends FragmentActivity {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            Log.d("map", "location found");
+                            Log.d("faiaz", "location found");
                             Location currentLocation = (Location) task.getResult();
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM, "my location ");
                         } else {
-                            Log.d("map", "current location not found");
+                            Log.d("faiaz", "current location not found");
                         }
                     }
                 });
             }
         } catch (SecurityException s) {
-            Log.d("map", "SecurityException found");
+            Log.d("faiaz", "SecurityException found");
         }
     }
 
     private void moveCamera(LatLng latLng, float zoom, String title) {
-        Log.d("map", "moveCamera found");
+        Log.d("faiaz", "moveCamera found");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
         MarkerOptions options = new MarkerOptions().position(latLng).title(title);
         if(title!="my location")
                 mMap.addMarker(options);
-        hideSoftKey();
+       // hideSoftKey();
     }
     private void hideSoftKey(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void initMap() {
+        Toast.makeText(this, "initMap", Toast.LENGTH_SHORT).show();
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -222,7 +226,7 @@ public class ShowPostLocation extends FragmentActivity {
                                     @Override
                                     public void onMapReady(GoogleMap googleMap) {
                                         mMap = googleMap;
-                                        Log.d("map", "initMap invoked");
+                                        Log.d("faiaz", "initMap invoked");
 
                                         if (mLocationPermission) {
                                             if(flag!= null){
@@ -238,7 +242,7 @@ public class ShowPostLocation extends FragmentActivity {
                                             }
                                             mMap.setMyLocationEnabled(true);
                                             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-                                            //init();
+                                            init();
                                         }
 
 
