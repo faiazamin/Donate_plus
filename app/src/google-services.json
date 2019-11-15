@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "185215040422",
+    "firebase_url": "https://dcsedu24.firebaseio.com",
+    "project_id": "dcsedu24",
+    "storage_bucket": "dcsedu24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185215040422:android:51a984a99c4b9232f9ed67",
+        "android_client_info": {
+          "package_name": "com.sbrotee63.donate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185215040422-bmmnstkalbiq725i8n05avgoqscegi2v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sbrotee63.donate",
+            "certificate_hash": "d98efb6632ffec819fbb31f40f3d9ca52d49fe2a"
+          }
+        },
+        {
+          "client_id": "185215040422-6olkdkq9etvanhh1knpc29sm2h1urvn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYEsQRaS5-8ynZajR5J306ldh2x1OdHe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185215040422-6olkdkq9etvanhh1knpc29sm2h1urvn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

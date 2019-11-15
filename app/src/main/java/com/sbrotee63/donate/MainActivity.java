@@ -1,14 +1,14 @@
-package com.example.donate;
+package com.sbrotee63.donate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class PostInformation extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_information);
+        setContentView(R.layout.activity_main);
     }
 }

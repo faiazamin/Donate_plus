@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostNewEvent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="Post New Event"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:text="Name"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:id="@+id/post_name"
+                        android:layout_weight="4" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Blood Group"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    >
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:id="@+id/post_bloodgroup"
+                        android:layout_weight="4" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Location"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:weightSum="8"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/post_location"
+                        android:layout_weight="4"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textAlignment="center"
+                        android:textSize="15dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/post_button_location"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        style="@style/StyleButton"
+                        android:layout_weight="4"
+                        android:text="Map"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Phone Number"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:id="@+id/post_cellno"
+                        android:layout_weight="4" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Date of Birth"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:weightSum="8"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/post_dateofrequirement"
+                        android:layout_weight="4"
+                        android:hint="DD-MM-YYYY"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="15dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/post_datepicker"
+                        android:layout_width="0dp"
+                        style="@style/StyleButton"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:text="Calendar"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="80dp"
+                ></LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                >
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/post_button"
+                    style="@style/StyleButton"
+                    android:text="@string/postdescription_button_post"
+                    android:textSize="24sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
