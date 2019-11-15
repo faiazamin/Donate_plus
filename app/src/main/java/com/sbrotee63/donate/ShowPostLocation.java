@@ -180,6 +180,23 @@ public class ShowPostLocation extends FragmentActivity {
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
         }
     }
+    private void showHospitalLocation(){
+        String searchstring = location;
+        findViewById(R.id.relative1).setVisibility(View.INVISIBLE);
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> list = new ArrayList<>();
+        try{
+            list = geocoder.getFromLocationName(searchstring,1);
+        }catch (IOException e){
+            Log.d("faiaz","IOexception : "+e.getMessage());
+        }
+        if(list.size()>0){
+            Address address = list.get(0);
+            Log.d("faiaz","Found new location "+address.toString()+".");
+            Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
+        }
+    }
     private void getDeviceLocation() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         Log.d("faiaz", "getDeviceLocation found");
@@ -207,6 +224,7 @@ public class ShowPostLocation extends FragmentActivity {
     private void moveCamera(LatLng latLng, float zoom, String title) {
         Log.d("faiaz", "moveCamera found");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        mMap.clear();
 
         MarkerOptions options = new MarkerOptions().position(latLng).title(title);
         if(title!="my location")
@@ -230,9 +248,17 @@ public class ShowPostLocation extends FragmentActivity {
 
                                         if (mLocationPermission) {
                                             if(flag!= null){
+                                                if(flag.equals("post")){
                                                 showPostLocation();
                                                 Toast.makeText(ShowPostLocation.this,"location",Toast.LENGTH_SHORT) .show();
-                                            }else {
+                                                }
+                                                else{
+                                                    showHospitalLocation();
+                                                    Toast.makeText(ShowPostLocation.this,"hospial location",Toast.LENGTH_SHORT) .show();
+                                                }
+                                            }
+
+                                            else {
                                                 getDeviceLocation();
                                             }
 
