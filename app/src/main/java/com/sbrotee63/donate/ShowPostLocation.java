@@ -184,6 +184,8 @@ public class ShowPostLocation extends FragmentActivity {
 
 
         String searchstring = location;
+        findViewById(R.id.relative1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.ic_gps).setVisibility(View.INVISIBLE);
         Geocoder geocoder = new Geocoder(this);
         List<Address> list = new ArrayList<>();
         try{
@@ -204,6 +206,7 @@ public class ShowPostLocation extends FragmentActivity {
     private void showHospitalLocation(){
         String searchstring = location;
         findViewById(R.id.relative1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.ic_gps).setVisibility(View.INVISIBLE);
         Geocoder geocoder = new Geocoder(this);
         List<Address> list = new ArrayList<>();
         try{
@@ -249,6 +252,7 @@ public class ShowPostLocation extends FragmentActivity {
     private void moveCamera(LatLng latLng, float zoom, String title) {
         Log.d("faiaz", "moveCamera found");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        mMap.setInfoWindowAdapter(new CustomWindowAdapter(this));
         mMap.clear();
         String snippet = title;
         MarkerOptions options = new MarkerOptions().position(latLng).title(title).snippet(snippet);
