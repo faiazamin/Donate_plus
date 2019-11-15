@@ -35,6 +35,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,6 +53,7 @@ public class ShowPostLocation extends FragmentActivity {
     private boolean mLocationPermission = false;
     private static final int LOCATION_PERMISSION = 1234;
     private static final float ZOOM = 15f;
+    private Marker mMarker;
 
     String flag;
     String location;
@@ -141,6 +143,22 @@ public class ShowPostLocation extends FragmentActivity {
                 hideSoftKey();
             }
         });
+        findViewById(R.id.place_info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("faiaz", "onClick: clicked place info");
+                try{
+                    if(mMarker.isInfoWindowShown()){
+                        mMarker.hideInfoWindow();
+                    }else{
+
+                        mMarker.showInfoWindow();
+                    }
+                }catch (NullPointerException e){
+                    Log.e("faiaz", "onClick: NullPointerException: " + e.getMessage() );
+                }
+            }
+        });
     }
 
     private void geoLocat(){
@@ -177,7 +195,10 @@ public class ShowPostLocation extends FragmentActivity {
             Address address = list.get(0);
             Log.d("faiaz","Found new location "+address.toString()+".");
             Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
-            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0)
+                    +"\n"+address.getPostalCode()
+                    +"\n"+address.getPhone()
+                    +"\n"+address.getUrl());
         }
     }
     private void showHospitalLocation(){
@@ -194,7 +215,11 @@ public class ShowPostLocation extends FragmentActivity {
             Address address = list.get(0);
             Log.d("faiaz","Found new location "+address.toString()+".");
             Toast.makeText(this,address.toString(),Toast.LENGTH_SHORT).show();
-            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0));
+
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), ZOOM,address.getAddressLine(0)
+                    +"\n"+address.getPostalCode()
+                    +"\n"+address.getPhone()
+                    +"\n"+address.getUrl());
         }
     }
     private void getDeviceLocation() {
@@ -225,10 +250,10 @@ public class ShowPostLocation extends FragmentActivity {
         Log.d("faiaz", "moveCamera found");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         mMap.clear();
-
-        MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+        String snippet = title;
+        MarkerOptions options = new MarkerOptions().position(latLng).title(title).snippet(snippet);
         if(title!="my location")
-                mMap.addMarker(options);
+            mMarker = mMap.addMarker(options);
        // hideSoftKey();
     }
     private void hideSoftKey(){
