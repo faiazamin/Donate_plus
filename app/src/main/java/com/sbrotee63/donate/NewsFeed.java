@@ -12,7 +12,9 @@ import android.os.Handler;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -163,6 +165,12 @@ public class NewsFeed extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("post/posts").addValueEventListener(postListener);
 
             //initRecyclerView();
+
+        Spinner mySpinner = (Spinner)findViewById(R.id.newsfeed_text_sortby);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(NewsFeed.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sortBy));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
         }
 
         private void initRecyclerView()
