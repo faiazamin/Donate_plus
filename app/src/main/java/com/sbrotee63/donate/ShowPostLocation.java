@@ -43,6 +43,7 @@ import com.google.android.gms.tasks.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ShowPostLocation extends FragmentActivity {
 
@@ -54,6 +55,7 @@ public class ShowPostLocation extends FragmentActivity {
     private static final int LOCATION_PERMISSION = 1234;
     private static final float ZOOM = 15f;
     private Marker mMarker;
+
 
     String flag;
     String location;
@@ -143,6 +145,22 @@ public class ShowPostLocation extends FragmentActivity {
                 hideSoftKey();
             }
         });
+
+        findViewById(R.id.place_tic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editText = (EditText) findViewById(R.id.postlocation_searchbar);
+
+
+
+                Intent intent = new Intent( ShowPostLocation.this,PostNewEvent.class);
+                intent.putExtra("location", editText.getText().toString());
+                //intent.putExtra("flag", "pick");
+                startActivity(intent);
+
+            }
+        });
+
         findViewById(R.id.place_info).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -225,6 +243,54 @@ public class ShowPostLocation extends FragmentActivity {
                     +"\n"+address.getUrl());
         }
     }
+
+    private void AddressPicker(){
+
+        getDeviceLocation();
+
+        EditText search = (EditText) findViewById(R.id.postlocation_searchbar);
+        com.google.android.material.textfield.TextInputEditText pickLocation = (com.google.android.material.textfield.TextInputEditText) findViewById(R.id.post_location);
+
+
+        findViewById(R.id.place_info).setVisibility(View.INVISIBLE);
+        findViewById(R.id.place_tic).setVisibility(View.VISIBLE);
+
+
+
+        mMap.setOnMapClickListener(latLng -> {
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Title").draggable(true));
+
+
+            Geocoder geocoder;
+            geocoder = new Geocoder(this, Locale.getDefault());
+
+            List<Address> addresses = null; // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            try {
+                addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+            String knownName = addresses.get(0).getFeatureName();
+
+
+
+            // pickLocation.setText(search.getText().toString());
+            search.setText(address);
+
+
+            Log.d("faiaz123","\n"+address+"\n"+city+"\n"+state+"\n"+country+"\n"+postalCode+"\n"+knownName+"\n");
+
+
+        });
+    }
+
     private void getDeviceLocation() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         Log.d("faiaz", "getDeviceLocation found");
@@ -238,6 +304,26 @@ public class ShowPostLocation extends FragmentActivity {
                             Log.d("faiaz", "location found");
                             Location currentLocation = (Location) task.getResult();
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), ZOOM, "my location ");
+
+                            Geocoder geocoder;
+                            geocoder = new Geocoder(ShowPostLocation.this, Locale.getDefault());
+
+                            List<Address> addresses = null; // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                            try {
+                                addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+
+
+                            EditText editText = findViewById(R.id.postlocation_searchbar);
+                            com.google.android.material.textfield.TextInputEditText pickLocation =  findViewById(R.id.post_location);
+
+                            editText.setText(address);
+                            //pickLocation.setText(address);
+
                         } else {
                             Log.d("faiaz", "current location not found");
                         }
@@ -280,6 +366,10 @@ public class ShowPostLocation extends FragmentActivity {
                                                 if(flag.equals("post")){
                                                 showPostLocation();
                                                 Toast.makeText(ShowPostLocation.this,"location",Toast.LENGTH_SHORT) .show();
+                                                }
+                                                else if(flag.equals("pick")){
+                                                    AddressPicker();
+                                                    Toast.makeText(ShowPostLocation.this,"Address Picker invoked",Toast.LENGTH_SHORT) .show();
                                                 }
                                                 else{
                                                     showHospitalLocation();

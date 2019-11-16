@@ -157,7 +157,7 @@
                         android:layout_height="match_parent"
                         style="@style/StyleButton"
                         android:layout_weight="4"
-                        android:text="Map"
+                        android:text="Pick"
                         android:textSize="15dp" />
 
                 </LinearLayout>

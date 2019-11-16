@@ -33,15 +33,29 @@ public class PostNewEvent extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     DatePicker datePicker;
 
+
+    String location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_new_event);
+
+
+        location = getIntent().getStringExtra("location");
+
         Spinner mySpinner = (Spinner)findViewById(R.id.post_bloodgroup);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(PostNewEvent.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bloodGroups));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
+
+
+
+        if(location != null){
+            com.google.android.material.textfield.TextInputEditText editText = findViewById(R.id.post_location);
+            editText.setText(location);
+        }
 
 
 
@@ -73,6 +87,16 @@ public class PostNewEvent extends AppCompatActivity {
                     }
                 };
                 FirebaseDatabase.getInstance().getReference("post/currentPost").addListenerForSingleValueEvent(valueEventListener);
+            }
+        });
+
+        findViewById(R.id.post_button_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostNewEvent.this, ShowPostLocation.class);
+                intent.putExtra("location", "Hello");
+                intent.putExtra("flag", "pick");
+                startActivity(intent);
             }
         });
 

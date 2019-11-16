@@ -62,14 +62,25 @@
         android:src="@drawable/icon_gps"></ImageView>
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/place_info"
+        android:layout_width="43dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/relative1"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
-        android:id="@+id/place_info"
-        android:src="@drawable/ic_info"/>
+        android:src="@drawable/ic_info" />
+
+    <ImageView
+        android:id="@+id/place_tic"
+        android:layout_width="43dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/place_info"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        android:src="@drawable/ic_tic" />
 
 
 </RelativeLayout>
