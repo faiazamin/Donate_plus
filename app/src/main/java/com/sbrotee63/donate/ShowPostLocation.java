@@ -39,6 +39,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -179,6 +180,19 @@ public class ShowPostLocation extends FragmentActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+        EditText editText = (EditText) findViewById(R.id.postlocation_searchbar);
+
+
+        Intent intent = new Intent( ShowPostLocation.this,PostNewEvent.class);
+        intent.putExtra("location", editText.getText().toString());
+        //intent.putExtra("flag", "pick");
+        startActivity(intent);
+
+    }
+
     private void geoLocat(){
 
         EditText searchbar =  findViewById(R.id.postlocation_searchbar);
@@ -249,7 +263,6 @@ public class ShowPostLocation extends FragmentActivity {
         getDeviceLocation();
 
         EditText search = (EditText) findViewById(R.id.postlocation_searchbar);
-        com.google.android.material.textfield.TextInputEditText pickLocation = (com.google.android.material.textfield.TextInputEditText) findViewById(R.id.post_location);
 
 
         findViewById(R.id.place_info).setVisibility(View.INVISIBLE);

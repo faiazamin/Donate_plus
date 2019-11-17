@@ -80,7 +80,7 @@
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
         android:visibility="invisible"
-        android:src="@drawable/ic_tic" />
+        android:src="@drawable/ic_check" />
 
 
 </RelativeLayout>
