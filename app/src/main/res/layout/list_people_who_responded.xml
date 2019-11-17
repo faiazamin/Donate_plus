@@ -46,28 +46,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2">
+
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/peoplewhoresponded_button_call"
+                        style="@style/StyleButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/StyleButton"
-                        android:layout_margin="5dp"
                         android:layout_gravity="center_horizontal"
-                        android:text="CALL">
-                    </com.google.android.material.button.MaterialButton>
+                        android:layout_margin="5dp"
+                        android:text="CALL"></com.google.android.material.button.MaterialButton>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2">
+
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/peoplewhoresponded_button_enlist"
+                        style="@style/StyleButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/StyleButton"
-                        android:layout_margin="5dp"
                         android:layout_gravity="center_horizontal"
-                        android:text="ENLIST">
-                    </com.google.android.material.button.MaterialButton>
+                        android:layout_margin="5dp"
+                        android:text="ENLIST"></com.google.android.material.button.MaterialButton>
                 </LinearLayout>
 
             </LinearLayout>
