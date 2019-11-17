@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sbrotee63.donate">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.PLACES" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,7 @@
         android:roundIcon="@mipmap/donate_plus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EnlistedPeople"></activity>
         <activity android:name=".PeopleWhoResponded" />
         <activity android:name=".MyResponses" />
         <activity android:name=".ShowPostLocation" />

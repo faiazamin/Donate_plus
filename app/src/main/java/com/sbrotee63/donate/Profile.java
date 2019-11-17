@@ -92,8 +92,11 @@ public class Profile extends AppCompatActivity {
                 }
             };
 
-
-        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
+        String uid = getIntent().getStringExtra("uid");
+        if(uid == null){
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }
+        FirebaseDatabase.getInstance().getReference("user/info/" + uid).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override

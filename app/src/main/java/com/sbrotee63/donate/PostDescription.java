@@ -1,8 +1,10 @@
 package com.sbrotee63.donate;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +47,7 @@ public class PostDescription extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(PostDescription.this, "Accepted", Toast.LENGTH_SHORT).show();
-                FirebaseDatabase.getInstance().getReference("post/response/" + postId).push().setValue(new NotiBlock(user.name, user.cellNo));
+                FirebaseDatabase.getInstance().getReference("post/response/" + postId + "/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new NotiBlock(user.name, user.cellNo, FirebaseAuth.getInstance().getCurrentUser().getUid()));
                 FirebaseDatabase.getInstance().getReference("post/userResponse/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(post);
             }
         });
@@ -60,6 +62,8 @@ public class PostDescription extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.postdes_location).setFocusable(false);
 
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -94,9 +98,24 @@ public class PostDescription extends AppCompatActivity {
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference("post/posts/" + post.postId).setValue(null);
-                FirebaseDatabase.getInstance().getReference("post/userPosts/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/"+ post.postId).setValue(post);
-                onBackPressed();
+
+                new AlertDialog.Builder(PostDescription.this)
+                        .setTitle("Alert")
+                        .setMessage("Are you sure you want to delete this?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase.getInstance().getReference("post/posts/" + post.postId).setValue(null);
+                        FirebaseDatabase.getInstance().getReference("post/userPosts/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/"+ post.postId).setValue(post);
+                        onBackPressed();
+                    }
+                })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         };
         ((MaterialButton)findViewById(R.id.postdesc_button_delete)).setOnClickListener(onClickListener1);

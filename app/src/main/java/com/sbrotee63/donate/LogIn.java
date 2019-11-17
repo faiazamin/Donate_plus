@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.concurrent.Executor;
+
 public class LogIn extends AppCompatActivity {
 
     @Override
@@ -31,6 +33,27 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 logIn(emailF.getText().toString().trim(), passwordF.getText().toString().trim());
 
+            }
+        });
+
+        findViewById(R.id.login_button_forgotpass).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(emailF.getText().toString().trim().equals("")){
+                    Toast.makeText(LogIn.this, "Please insert email.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                FirebaseAuth.getInstance().sendPasswordResetEmail(emailF.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(LogIn.this, "Password reset email is sent.", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(LogIn.this, "Error: Check your email or network connection.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }

@@ -180,19 +180,6 @@ public class ShowPostLocation extends FragmentActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-
-        EditText editText = (EditText) findViewById(R.id.postlocation_searchbar);
-
-
-        Intent intent = new Intent( ShowPostLocation.this,PostNewEvent.class);
-        intent.putExtra("location", editText.getText().toString());
-        //intent.putExtra("flag", "pick");
-        startActivity(intent);
-
-    }
-
     private void geoLocat(){
 
         EditText searchbar =  findViewById(R.id.postlocation_searchbar);
