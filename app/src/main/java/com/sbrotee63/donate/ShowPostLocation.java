@@ -422,21 +422,3 @@ public class ShowPostLocation extends FragmentActivity {
 
 
 
-/*searchbar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView searchbar, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH
-                        ||actionId == EditorInfo.IME_ACTION_DONE
-                        || event.getAction() == KeyEvent.KEYCODE_ENTER
-                        || event.getAction() == KeyEvent.ACTION_DOWN
-                        || actionId == EditorInfo.IME_ACTION_NEXT
-                        || actionId == EditorInfo.IME_ACTION_GO
-                        || actionId == EditorInfo.IME_ACTION_SEND
-                ){
-                    Log.d("map","Something happened. ");
-
-                    geoLocat();
-                }
-                return false;
-            }
-        });*/

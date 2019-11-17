@@ -12,7 +12,9 @@ import android.os.Handler;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,97 +81,104 @@ public class NewsFeed extends AppCompatActivity {
         Button feedRequestButton = (Button) findViewById(R.id.feed_button_request);
         feedRequestButton.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(NewsFeed.this, PostNewEvent.class);
-                    startActivity(intent);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, PostNewEvent.class);
+                startActivity(intent);
+            }
+        });
 
 
-            Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
+        Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(NewsFeed.this, Settings.class);
-                    startActivity(intent);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, Settings.class);
+                startActivity(intent);
+            }
+        });
 
-            Button profileButton = (Button) findViewById(R.id.feed_button_profile);
+        Button profileButton = (Button) findViewById(R.id.feed_button_profile);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(NewsFeed.this, Profile.class);
-                    startActivity(intent);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, Profile.class);
+                startActivity(intent);
+            }
+        });
 
-            Button notificationButton = (Button) findViewById(R.id.feed_button_notification);
+        Button notificationButton = (Button) findViewById(R.id.feed_button_notification);
 
         notificationButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(NewsFeed.this, Notifications.class);
-                    startActivity(intent);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, Notifications.class);
+                startActivity(intent);
+            }
+        });
 
-            Button bloodBankButton = (Button) findViewById(R.id.feed_button_hospitals);
+        Button bloodBankButton = (Button) findViewById(R.id.feed_button_hospitals);
 
         bloodBankButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(NewsFeed.this, HospitalAndBloodBank.class);
-                    startActivity(intent);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFeed.this, HospitalAndBloodBank.class);
+                startActivity(intent);
+            }
+        });
 
 
 
-            ValueEventListener postListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    bloodGroups.clear();
-                    locations.clear();
-                    statuses.clear();
-                    for( DataSnapshot postSnapShot : dataSnapshot.getChildren()){
-                        Post post = postSnapShot.getValue(Post.class);
-                        bloodGroups.add(post.bloodGroup);
-                        locations.add(post.location);
-                        postId.add(post.postId);
-                        if(post.response.equals("0")){
-                            statuses.add("Urgent");
-                        }
-                        else{
-                            statuses.add("");
-                        }
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                bloodGroups.clear();
+                locations.clear();
+                statuses.clear();
+                for( DataSnapshot postSnapShot : dataSnapshot.getChildren()){
+                    Post post = postSnapShot.getValue(Post.class);
+                    bloodGroups.add(post.bloodGroup);
+                    locations.add(post.location);
+                    postId.add(post.postId);
+                    if(post.response.equals("0")){
+                        statuses.add("Urgent");
                     }
-                    Collections.reverse(bloodGroups);
-                    Collections.reverse(postId);
-                    Collections.reverse(locations);
-                    Collections.reverse(statuses);
-                    initRecyclerView();
+                    else{
+                        statuses.add("");
+                    }
                 }
+                Collections.reverse(bloodGroups);
+                Collections.reverse(postId);
+                Collections.reverse(locations);
+                Collections.reverse(statuses);
+                initRecyclerView();
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.w("newTag", "loadPost:onCancelled", databaseError.toException());
-                }
-            };
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("newTag", "loadPost:onCancelled", databaseError.toException());
+            }
+        };
         FirebaseDatabase.getInstance().getReference("post/posts").addValueEventListener(postListener);
-            //initRecyclerView();
-        }
 
-        private void initRecyclerView()
-        {
-            RecyclerView recyclerView = findViewById(R.id.recyclerview);
-            RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, bloodGroups, locations, statuses, postId);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        }
+        //initRecyclerView();
 
+        Spinner mySpinner = (Spinner)findViewById(R.id.newsfeed_text_sortby);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(NewsFeed.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sortBy));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
     }
+
+    private void initRecyclerView()
+    {
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, bloodGroups, locations, statuses, postId);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+}
