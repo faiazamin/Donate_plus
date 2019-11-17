@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".ChangeProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:text="Change Profile"
                 android:textColor="@color/colorPrimary"
                 android:textSize="32sp"
                 android:textStyle="bold" />
@@ -121,7 +121,45 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Password"
+                    android:text="Current Password"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="4">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_password_currentpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="New Password"
                     android:textSize="20sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
@@ -158,7 +196,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Confirm Password"
+                    android:text="Confirm New Password"
                     android:textSize="20sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
@@ -208,11 +246,11 @@
                 android:layout_gravity="center"
                 android:layout_weight="4">
 
-                    <Spinner
-                        android:id="@+id/signup_text_bloodgroup"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
+                <Spinner
+                    android:id="@+id/signup_text_bloodgroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
             </LinearLayout>
         </LinearLayout>
 
@@ -405,20 +443,5 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="50dp">
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signup_button_signup"
-            style="@style/StyleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Sign Up" />
-
     </LinearLayout>
 </ScrollView>
