@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/donate_plus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnlistedPeople"></activity>
+        <activity android:name=".ChangeProfile"></activity>
+        <activity android:name=".EnlistedPeople" />
         <activity android:name=".PeopleWhoResponded" />
         <activity android:name=".MyResponses" />
         <activity android:name=".ShowPostLocation" />
@@ -28,7 +29,7 @@
         <activity android:name=".Notifications" />
         <activity android:name=".NewsFeed" />
         <activity android:name=".Profile" />
-        <activity android:name=".LogIn"></activity>
+        <activity android:name=".LogIn" />
         <activity android:name=".SignUp" />
         <activity android:name=".MainActivity" />
 
