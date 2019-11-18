@@ -7,6 +7,7 @@ public class NotiBlock {
     public String isEnlisted = "false";
     public String isCalled = "false";
     public String postId;
+    public String note = "";
 
     NotiBlock(){
 

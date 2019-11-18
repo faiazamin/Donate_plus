@@ -8,16 +8,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -31,9 +37,10 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
     private ArrayList<String> isCalled = new ArrayList<>();
     private ArrayList<String> isEnlisted = new ArrayList<>();
     private ArrayList<String> postIds = new ArrayList<>();
+    private ArrayList<String> notes = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapterPeopleWhoResponded(Context context, ArrayList<String> aResponses, ArrayList<String> aNumbers, ArrayList<String> ids, ArrayList<String> isCalled, ArrayList<String> isEnlisted, ArrayList<String> postIds) {
+    public RecyclerViewAdapterPeopleWhoResponded(Context context, ArrayList<String> aResponses, ArrayList<String> aNumbers, ArrayList<String> ids, ArrayList<String> isCalled, ArrayList<String> isEnlisted, ArrayList<String> postIds, ArrayList<String> notes) {
         responses = aResponses;
         numbers = aNumbers;
         mContext = context;
@@ -41,6 +48,7 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
         this.isCalled = isCalled;
         this.isEnlisted = isEnlisted;
         this.postIds = postIds;
+        this.notes = notes;
     }
 
     @Override
@@ -74,19 +82,37 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
             }
         });
 
+        holder.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase.getInstance().getReference("post/response/" + postIds.get(position) + "/" + ids.get(position) + "/note").setValue(holder.note.getText().toString().trim());
+            }
+        });
+
         if(isCalled.get(position).equals("true")){
-            holder.parentLayout.setBackgroundColor(Color.parseColor("#2d2d2d"));
+            holder.called.setText("Called");
         }
         if(isEnlisted.get(position).equals("true")){
-            holder.parentLayout.setBackgroundColor(Color.parseColor("#2d2d2d"));
+            holder.listed.setText("Enlisted");
         }
+
+        FirebaseDatabase.getInstance().getReference("post/response/" + postIds.get(position) + "/" + ids.get(position) + "/note").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                holder.note.setText(dataSnapshot.getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, Profile.class);
                 intent.putExtra("uid", ids.get(position));
-                // TODO : change background to yellow : I tried so hard and got no far.
                 mContext.startActivity(intent);
             }
         });
@@ -109,6 +135,10 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
         MaterialButton call;
         MaterialButton enlist;
         LinearLayout parentLayout;
+        TextView called;
+        TextView listed;
+        MaterialButton save;
+        TextInputEditText note;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -116,6 +146,10 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
             call = itemView.findViewById(R.id.peoplewhoresponded_button_call);
             enlist = itemView.findViewById(R.id.peoplewhoresponded_button_enlist);
             parentLayout = itemView.findViewById(R.id.parent_layout_people_who_responded);
+            called = itemView.findViewById(R.id.peoplewhoresponded_text_called);
+            listed = itemView.findViewById(R.id.peoplewhoresponded_text_enlisted);
+            save = itemView.findViewById(R.id.peoplewhoresponded_button_notes);
+            note = itemView.findViewById(R.id.peoplewhoresponded_text_notes);
         }
 
         public void setText(String s) {
