@@ -375,6 +375,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:focusable="false"
+                        android:minLines="2"
                         android:focusableInTouchMode="false"></com.google.android.material.textfield.TextInputEditText>
                 </LinearLayout>
                 <LinearLayout
