@@ -47,7 +47,7 @@ public class PostDescription extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(PostDescription.this, "Accepted", Toast.LENGTH_SHORT).show();
-                FirebaseDatabase.getInstance().getReference("post/response/" + postId + "/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new NotiBlock(user.name, user.cellNo, FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                FirebaseDatabase.getInstance().getReference("post/response/" + postId + "/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new NotiBlock(user.name, user.cellNo, FirebaseAuth.getInstance().getCurrentUser().getUid(), postId));
                 FirebaseDatabase.getInstance().getReference("post/userResponse/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(post);
             }
         });
@@ -69,6 +69,10 @@ public class PostDescription extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
+                if(post == null){
+                    Toast.makeText(PostDescription.this, "Sorry. Post has been deleted.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 put(post);
                 if(post.seekerId.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
                     ((Button)findViewById(R.id.postdesc_button_accept)).setText("Responses");

@@ -24,6 +24,10 @@ public class PeopleWhoResponded extends AppCompatActivity {
 
     private ArrayList<String> peopleWhoResponded = new ArrayList<>();
     private ArrayList<String> phoneNumber = new ArrayList<String>();
+    private ArrayList<String> uid = new ArrayList<String>();
+    private ArrayList<String> isEnlisted = new ArrayList<String>();
+    private ArrayList<String> isCalled = new ArrayList<String>();
+    private ArrayList<String> postIds = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +41,25 @@ public class PeopleWhoResponded extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 peopleWhoResponded.clear();
                 phoneNumber.clear();
+                uid.clear();
+                isCalled.clear();
+                isEnlisted.clear();
+                postIds.clear();
                 for(DataSnapshot child : dataSnapshot.getChildren()){
                     NotiBlock notiBlock = child.getValue(NotiBlock.class);
                     peopleWhoResponded.add(notiBlock.name);
                     phoneNumber.add(notiBlock.cellNo);
+                    uid.add(notiBlock.uid);
+                    isCalled.add(notiBlock.isCalled);
+                    isEnlisted.add(notiBlock.isEnlisted);
+                    postIds.add(notiBlock.postId);
                 }
                 Collections.reverse(peopleWhoResponded);
                 Collections.reverse(phoneNumber);
+                Collections.reverse(uid);
+                Collections.reverse(postIds);
+                Collections.reverse(isCalled);
+                Collections.reverse(isEnlisted);
                 initRecyclerView();
             }
 
@@ -59,7 +75,7 @@ public class PeopleWhoResponded extends AppCompatActivity {
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recyclerviewpeoplewhoresponded);
-        RecyclerViewAdapterPeopleWhoResponded adapter = new RecyclerViewAdapterPeopleWhoResponded(this, peopleWhoResponded, phoneNumber);
+        RecyclerViewAdapterPeopleWhoResponded adapter = new RecyclerViewAdapterPeopleWhoResponded(this, peopleWhoResponded, phoneNumber, uid, isCalled, isEnlisted, postIds);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

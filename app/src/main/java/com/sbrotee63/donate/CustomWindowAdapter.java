@@ -13,12 +13,12 @@ import com.google.android.gms.maps.model.Marker;
 
 public class CustomWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
-    private final View mWindow;
+    //private final View mWindow;
     private Context mContext;
 
     public CustomWindowAdapter(Context context) {
         mContext = context;
-        mWindow = LayoutInflater.from(context).inflate(R.layout.custom_info_window, null);
+        //mWindow = LayoutInflater.from(context).inflate(R.layout.custom_info_window, null);
     }
 
     private void rendowWindowText(Marker marker, View view){
@@ -40,13 +40,15 @@ public class CustomWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
     @Override
     public View getInfoWindow(Marker marker) {
-        rendowWindowText(marker, mWindow);
-        return mWindow;
+        //rendowWindowText(marker, mWindow);
+        //return mWindow;
+        return null; // TODO : remove this line
     }
 
     @Override
     public View getInfoContents(Marker marker) {
-        rendowWindowText(marker, mWindow);
-        return mWindow;
+        //rendowWindowText(marker, mWindow);
+        //return mWindow;
+        return null; // TODO : remove this line
     }
 }

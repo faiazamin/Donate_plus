@@ -35,6 +35,16 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
+        String uid = getIntent().getStringExtra("uid");
+        if(uid == null){
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }
+        else{
+            findViewById(R.id.profile_button_seeposts).setVisibility(View.INVISIBLE);
+            findViewById(R.id.profile_button_seeresponses).setVisibility(View.INVISIBLE);
+        }
+        //Toast.makeText(Profile.this, uid, Toast.LENGTH_SHORT).show();
+
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
@@ -91,11 +101,6 @@ public class Profile extends AppCompatActivity {
                     Log.w("newTag", "Error", databaseError.toException());
                 }
             };
-
-        String uid = getIntent().getStringExtra("uid");
-        if(uid == null){
-            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        }
         FirebaseDatabase.getInstance().getReference("user/info/" + uid).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
@@ -105,16 +110,6 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
-
-        findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Profile.this, NewsFeed.class);
-                startActivity(intent);
-            }
-        });
-        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.profile_button_seeposts).setOnClickListener(new View.OnClickListener() {
             @Override
