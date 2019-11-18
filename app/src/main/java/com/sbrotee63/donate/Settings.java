@@ -61,6 +61,18 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        Button ChangeProfileButton = (Button) findViewById(R.id.setting_button_change_profile);
+
+        ChangeProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Settings.this, ChangeProfile.class);
+                startActivity(intent);
+                Toast.makeText(Settings.this, "Logged out", Toast.LENGTH_LONG).show();
+            }
+        });
+
         Button logoutButton = (Button) findViewById(R.id.setting_button_logout);
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
