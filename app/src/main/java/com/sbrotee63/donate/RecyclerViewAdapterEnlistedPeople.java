@@ -59,6 +59,7 @@ public class RecyclerViewAdapterEnlistedPeople extends RecyclerView.Adapter<Recy
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseDatabase.getInstance().getReference("post/response/" + postIds.get(position) + "/" + uid.get(position) + "/isEnlisted").setValue("false ");
                 FirebaseDatabase.getInstance().getReference("post/list/" + postIds.get(position) + "/" + uid.get(position)).setValue(null);
             }
         });

@@ -49,7 +49,7 @@ public class Profile extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("post/responseCount/" + uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String temp = dataSnapshot.getValue(String.class);
+                String temp = dataSnapshot.getValue(Long.class).toString();
                 if(temp == null) temp = "0";
                 ((TextInputEditText)findViewById(R.id.profile_totalresponses)).setText(temp);
             }
