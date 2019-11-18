@@ -79,6 +79,7 @@ public class RecyclerViewAdapterPeopleWhoResponded extends RecyclerView.Adapter<
                 Toast.makeText(mContext, responses.get(position) + " Enlisted", Toast.LENGTH_SHORT).show();
                 isEnlisted.set(position, "true");
                 FirebaseDatabase.getInstance().getReference("post/response/" + postIds.get(position) + "/" + ids.get(position) + "/isEnlisted").setValue("true");
+                FirebaseDatabase.getInstance().getReference("post/list/" + postIds.get(position) + "/" + ids.get(position)).setValue( new NotiBlock(responses.get(position), numbers.get(position), ids.get(position), postIds.get(position)) );
             }
         });
 

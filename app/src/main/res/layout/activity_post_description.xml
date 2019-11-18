@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
-                        android:text="@string/postdescription_textview_dob"
+                        android:text="Date of Requirement"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         />
@@ -334,7 +334,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/StyleButton"
-                    android:text="Enlisted">
+                    android:text="Delete">
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>

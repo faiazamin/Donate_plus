@@ -37,15 +37,13 @@ public class PostDescription extends AppCompatActivity {
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //FirebaseDatabase.getInstance().getReference("post/response/" + postId).push().setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                //FirebaseDatabase.getInstance().getReference("post/response/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(postId);
-                //Toast.makeText(PostDescription.this, "Response noted", Toast.LENGTH_SHORT).show();
-                if( !((Button) findViewById(R.id.postdesc_button_accept)).getText().equals("Accept") ){
-                    Intent intent = new Intent(PostDescription.this, PeopleWhoResponded.class);
-                    intent.putExtra("postId", post.postId);
-                    startActivity(intent);
-                    return;
-                }
+               if( !((Button) findViewById(R.id.postdesc_button_accept)).getText().equals("Accept") ) {
+                   Intent intent = new Intent(PostDescription.this, PeopleWhoResponded.class);
+                   intent.putExtra("postId", post.postId);
+                   startActivity(intent);
+                   return;
+               }
+               changeResposneCount();
                 Toast.makeText(PostDescription.this, "Accepted", Toast.LENGTH_SHORT).show();
                 FirebaseDatabase.getInstance().getReference("post/response/" + postId + "/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new NotiBlock(user.name, user.cellNo, FirebaseAuth.getInstance().getCurrentUser().getUid(), postId));
                 FirebaseDatabase.getInstance().getReference("post/userResponse/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(post);
@@ -86,6 +84,7 @@ public class PostDescription extends AppCompatActivity {
                 if(!post.seekerId.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
                     ((MaterialButton)findViewById(R.id.postdesc_button_notify)).setVisibility(View.INVISIBLE);
                     ((MaterialButton)findViewById(R.id.postdesc_button_delete)).setVisibility(View.INVISIBLE);
+                    ((MaterialButton)findViewById(R.id.postdesc_button_list)).setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -147,8 +146,36 @@ public class PostDescription extends AppCompatActivity {
         };
         FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(valueEventListener1);
 
+        findViewById(R.id.postdesc_button_list).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostDescription.this, EnlistedPeople.class);
+                intent.putExtra("postId", postId);
+                startActivity(intent);
+            }
+        });
+
     }
     void put(Post post){
         this.post = post;
+    }
+
+    public int count = 0;
+
+    void changeResposneCount(){
+        FirebaseDatabase.getInstance().getReference("post/responseCount/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String temp = dataSnapshot.getValue(String.class);
+                if(temp == null) temp = "0";
+                count = Integer.parseInt( temp ) + 1;
+                FirebaseDatabase.getInstance().getReference("post/responseCount/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(count);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

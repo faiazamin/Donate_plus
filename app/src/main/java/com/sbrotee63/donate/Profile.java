@@ -1,5 +1,6 @@
 package com.sbrotee63.donate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -45,6 +46,19 @@ public class Profile extends AppCompatActivity {
         }
         //Toast.makeText(Profile.this, uid, Toast.LENGTH_SHORT).show();
 
+        FirebaseDatabase.getInstance().getReference("post/responseCount/" + uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String temp = dataSnapshot.getValue(String.class);
+                if(temp == null) temp = "0";
+                ((TextInputEditText)findViewById(R.id.profile_totalresponses)).setText(temp);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
