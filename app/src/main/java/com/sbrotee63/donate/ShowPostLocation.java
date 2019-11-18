@@ -236,7 +236,7 @@ public class ShowPostLocation extends FragmentActivity {
                                         if (mLocationPermission) {
                                             if(flag.equals("post")){
                                                 showPostLocation();
-                                                Toast.makeText(ShowPostLocation.this,location, 0).show();
+                                                Toast.makeText(ShowPostLocation.this,location, Toast.LENGTH_SHORT).show();
                                             }else {
                                                 getDeviceLocation();
                                             }

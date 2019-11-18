@@ -60,7 +60,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_text_name"
+                    android:id="@+id/changeprofile_text_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
@@ -97,7 +97,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_text_email"
+                    android:id="@+id/changeprofile_text_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"/>
@@ -134,7 +134,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_password_currentpassword"
+                    android:id="@+id/changeprofile_password_currentpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
@@ -172,7 +172,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_password_password"
+                    android:id="@+id/changeprofile_password_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
@@ -209,7 +209,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_password_confirmpassword"
+                    android:id="@+id/changeprofile_password_confirmpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
@@ -247,7 +247,7 @@
                 android:layout_weight="4">
 
                 <Spinner
-                    android:id="@+id/signup_text_bloodgroup"
+                    android:id="@+id/changeprofile_text_bloodgroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
@@ -294,7 +294,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/signup_text_dateofbirth"
+                        android:id="@+id/changeprofile_text_dateofbirth"
                         android:layout_weight="4"
                         android:hint="DD-MM-YYYY"
                         android:textColorHint="@color/colorPrimary"
@@ -303,7 +303,7 @@
                         android:textColor="@color/colorPrimary"/>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/signup_button_deathofbirth"
+                        android:id="@+id/changeprofile_button_deathofbirth"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
@@ -344,7 +344,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/singup_text_cellnumber"
+                    android:id="@+id/changeprofile_text_cellnumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/colorPrimary" />
@@ -380,7 +380,7 @@
                 android:layout_weight="4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signup_text_address"
+                    android:id="@+id/changeprofile_text_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/colorPrimary"/>
@@ -427,21 +427,26 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/signup_text_lastblooddonation"
+                        android:id="@+id/changeprofile_text_lastblooddonation"
                         android:layout_weight="5"
                         android:textSize="15sp"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/signup_button_datepicker"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        style="@style/StyleButton"
-                        android:text="Map"
-                        android:textSize="15sp" />
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/changeprofile_button_apply"
+            style="@style/StyleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Apply Changes" />
+
     </LinearLayout>
 </ScrollView>

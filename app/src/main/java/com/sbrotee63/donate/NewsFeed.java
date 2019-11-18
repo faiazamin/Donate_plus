@@ -166,11 +166,11 @@ public class NewsFeed extends AppCompatActivity {
 
             //initRecyclerView();
 
-        Spinner mySpinner = (Spinner)findViewById(R.id.newsfeed_text_sortby);
+        /*Spinner mySpinner = (Spinner)findViewById(R.id.newsfeed_text_sortby);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(NewsFeed.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sortBy));
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
+        mySpinner.setAdapter(myAdapter);*/
         }
 
         private void initRecyclerView()
