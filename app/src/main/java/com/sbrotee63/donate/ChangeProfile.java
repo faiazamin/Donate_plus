@@ -136,7 +136,7 @@ public class ChangeProfile extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(ChangeProfile.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ((EditText)findViewById(R.id.post_dateofrequirement)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
+                        ((TextInputEditText)findViewById(R.id.changeprofile_text_lastblooddonation)).setText(dayOfMonth+"-"+(month+1)+"-"+year);
                     }
                 },currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
