@@ -1,6 +1,5 @@
 package com.sbrotee63.donate;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -36,29 +35,6 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-        String uid = getIntent().getStringExtra("uid");
-        if(uid == null){
-            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        }
-        else{
-            findViewById(R.id.profile_button_seeposts).setVisibility(View.INVISIBLE);
-            findViewById(R.id.profile_button_seeresponses).setVisibility(View.INVISIBLE);
-        }
-        //Toast.makeText(Profile.this, uid, Toast.LENGTH_SHORT).show();
-
-        FirebaseDatabase.getInstance().getReference("post/responseCount/" + uid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String temp = dataSnapshot.getValue(Long.class).toString();
-                if(temp == null) temp = "0";
-                ((TextInputEditText)findViewById(R.id.profile_totalresponses)).setText(temp);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
@@ -104,18 +80,20 @@ public class Profile extends AppCompatActivity {
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    User user = dataSnapshot.getValue(User.class);
-                    setup(user);
-                }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                setup(user);
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    // Getting Post failed, log a message
-                    Log.w("newTag", "Error", databaseError.toException());
-                }
-            };
-        FirebaseDatabase.getInstance().getReference("user/info/" + uid).addValueEventListener(postListener);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("newTag", "Error", databaseError.toException());
+            }
+        };
+
+
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +102,16 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
+
+        findViewById(R.id.feed_button_feed).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, NewsFeed.class);
+                startActivity(intent);
+            }
+        });
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
 
         findViewById(R.id.profile_button_seeposts).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +133,6 @@ public class Profile extends AppCompatActivity {
     void setup(User user){
         ((TextInputEditText) findViewById(R.id.profile_name)).setText(user.name);
         ((TextInputEditText) findViewById(R.id.profile_email)).setText(user.email);
-        Toast.makeText(Profile.this,user.email,Toast.LENGTH_SHORT).show();
         ((TextInputEditText) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
         ((TextInputEditText) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);
         ((TextInputEditText) findViewById(R.id.profile_address)).setText(user.address);
