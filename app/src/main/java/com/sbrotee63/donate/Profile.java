@@ -145,6 +145,7 @@ public class Profile extends AppCompatActivity {
     void setup(User user){
         ((TextInputEditText) findViewById(R.id.profile_name)).setText(user.name);
         ((TextInputEditText) findViewById(R.id.profile_email)).setText(user.email);
+        Toast.makeText(Profile.this,user.email,Toast.LENGTH_SHORT).show();
         ((TextInputEditText) findViewById(R.id.profile_bloodgroup)).setText(user.bloodGroup);
         ((TextInputEditText) findViewById(R.id.profile_dateofbirth)).setText(user.dateOfBirth);
         ((TextInputEditText) findViewById(R.id.profile_address)).setText(user.address);

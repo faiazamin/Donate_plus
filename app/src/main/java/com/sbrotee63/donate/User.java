@@ -24,4 +24,14 @@ public class User {
         this.lastBloodDonation = lastBloodDonation;
         this.userId = userId;
     }
+
+    User(String name, String email, String bloodGroup, String dateOfBirth, String address, String cellNo, String lastBloodDonation){
+        this.name = name;
+        this.email = email;
+        this.bloodGroup = bloodGroup;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.cellNo = cellNo;
+        this.lastBloodDonation = lastBloodDonation;
+    }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -86,6 +87,8 @@ public class ChangeProfile extends AppCompatActivity {
 
                     User newUser = new User(name, email, bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
                     FirebaseDatabase.getInstance().getReference("user/info/" + user.getUid()).setValue(newUser);
+                    Intent intent = new Intent(ChangeProfile.this, Profile.class);
+                    startActivity(intent);
 
                 }
                 else{
@@ -93,16 +96,17 @@ public class ChangeProfile extends AppCompatActivity {
                 }
 
 
-                if(currentPassword.equals("")){
+                if(currentPassword == null){
                     return;
                 }
                 else{
+                    Log.w("newtag","Change password.");
                     setPassword();
                 }
             }
         });;
 
-        findViewById(R.id.changeprofile_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.changeprofile_button_dateofbirth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePicker(ChangeProfile.this);
@@ -121,7 +125,7 @@ public class ChangeProfile extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.changeprofile_button_deathofbirth).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.changeprofile_button_lastblooddonation).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePicker(ChangeProfile.this);
@@ -179,6 +183,7 @@ public class ChangeProfile extends AppCompatActivity {
 
         if(!confirmPassword.equals(password)){
             Toast.makeText(ChangeProfile.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ChangeProfile.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -208,6 +213,9 @@ public class ChangeProfile extends AppCompatActivity {
                                                 }
                                             }
                                         });
+
+                                Intent intent = new Intent(ChangeProfile.this, Profile.class);
+                                startActivity(intent);
 
                             }
 

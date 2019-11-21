@@ -99,7 +99,7 @@ public class ShowPostLocation extends FragmentActivity {
             Log.d("faiaz",permissions[0]+" revoked");
         }
     }
-
+    // When peimission is not granted , this method works
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Toast.makeText(this, "onRequestPermissionsResult", Toast.LENGTH_SHORT).show();
@@ -123,7 +123,7 @@ public class ShowPostLocation extends FragmentActivity {
         }
 
     }
-
+    //inits button and image onclick activities
     private void init(){
         Log.d("faiaz.","init : initializing");
 
@@ -346,10 +346,13 @@ public class ShowPostLocation extends FragmentActivity {
             mMarker = mMap.addMarker(options);
        // hideSoftKey();
     }
+    //
+    //Does Not Work
     private void hideSoftKey(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
+    //Decides which map to show
     private void initMap() {
         Toast.makeText(this, "initMap", Toast.LENGTH_SHORT).show();
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

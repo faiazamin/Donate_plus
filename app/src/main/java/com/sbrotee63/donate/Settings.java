@@ -66,7 +66,6 @@ public class Settings extends AppCompatActivity {
         ChangeProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(Settings.this, ChangeProfile.class);
                 startActivity(intent);
                 Toast.makeText(Settings.this, "Logged out", Toast.LENGTH_LONG).show();

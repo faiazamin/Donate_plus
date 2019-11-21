@@ -303,13 +303,13 @@
                         android:textColor="@color/colorPrimary"/>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/changeprofile_button_deathofbirth"
+                        android:id="@+id/changeprofile_button_dateofbirth"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         style="@style/StyleButton"
                         android:text="Calendar"
-                        android:textSize="15dp" />
+                        android:textSize="10dp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -428,8 +428,16 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/changeprofile_text_lastblooddonation"
-                        android:layout_weight="5"
+                        android:layout_weight="4"
                         android:textSize="15sp"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/changeprofile_button_lastblooddonation"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        style="@style/StyleButton"
+                        android:text="Calendar"
+                        android:textSize="10dp" />
 
                 </LinearLayout>
             </LinearLayout>
