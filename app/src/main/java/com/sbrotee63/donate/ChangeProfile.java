@@ -29,6 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ChangeProfile extends AppCompatActivity {
 
+
+    //varriables
     String name;
     String email;
     String password;
@@ -43,6 +45,7 @@ public class ChangeProfile extends AppCompatActivity {
 
     EditText editPass;
     EditText editConPass;
+    EditText editCurPass;
 
 
     DatePickerDialog datePickerDialog;
@@ -65,12 +68,15 @@ public class ChangeProfile extends AppCompatActivity {
             }
         };
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        FirebaseDatabase.getInstance().getReference("user/info/" + uid ).addValueEventListener(postListener);
+        FirebaseDatabase.getInstance().getReference("user/info/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(postListener);
+        ;
 
 
-        findViewById(R.id.changeprofile_text_email).setFocusable(false);
+
+
+        //varriable initiation and manipulation
 
         editPass =      (EditText) findViewById(R.id.changeprofile_password_password);
         password = editPass.getText().toString();
@@ -78,6 +84,13 @@ public class ChangeProfile extends AppCompatActivity {
         editConPass =       (EditText) findViewById(R.id.changeprofile_password_confirmpassword);
         confirmPassword = editConPass.getText().toString();
 
+        editCurPass =       (EditText) findViewById(R.id.changeprofile_password_currentpassword);
+        currentPassword = editCurPass.getText().toString();
+
+        findViewById(R.id.changeprofile_text_email).setFocusable(false);
+
+
+        //by clicking this button, user updates his profile
         findViewById(R.id.changeprofile_button_apply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +100,12 @@ public class ChangeProfile extends AppCompatActivity {
 
                     User newUser = new User(name, email, bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
                     FirebaseDatabase.getInstance().getReference("user/info/" + user.getUid()).setValue(newUser);
+
+                    if(currentPassword != null){
+                        Log.w("newtag223","Change password.");
+                        setPassword();
+                    }
+
                     Intent intent = new Intent(ChangeProfile.this, Profile.class);
                     startActivity(intent);
 
@@ -96,16 +115,10 @@ public class ChangeProfile extends AppCompatActivity {
                 }
 
 
-                if(currentPassword == null){
-                    return;
-                }
-                else{
-                    Log.w("newtag","Change password.");
-                    setPassword();
-                }
+
             }
         });;
-
+        //code for datpicker dialogue
         findViewById(R.id.changeprofile_button_dateofbirth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +137,8 @@ public class ChangeProfile extends AppCompatActivity {
 
             }
         });
+
+        //code for datpicker dialogue
 
         findViewById(R.id.changeprofile_button_lastblooddonation).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +160,7 @@ public class ChangeProfile extends AppCompatActivity {
         });
 
 
-
+        //drop down list for blood group selection
         Spinner mySpinner = (Spinner)findViewById(R.id.changeprofile_text_bloodgroup);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ChangeProfile.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bloodGroups));
 
@@ -157,7 +172,7 @@ public class ChangeProfile extends AppCompatActivity {
 
 
     }
-
+    // function for setting up user in formaton to their respctive field
     void setup(User user){
         ((TextInputEditText) findViewById(R.id.changeprofile_text_name)).setText(user.name);
         ((TextInputEditText) findViewById(R.id.changeprofile_text_email)).setText(user.email);
@@ -168,6 +183,7 @@ public class ChangeProfile extends AppCompatActivity {
         ((TextInputEditText) findViewById(R.id.changeprofile_text_lastblooddonation)).setText(user.lastBloodDonation);
     }
 
+     // checks is al fields are present
     private Boolean allFieldChecked(){
         name = ((EditText)findViewById(R.id.changeprofile_text_name)).getText().toString().trim();
         bloodGroup = ((Spinner)findViewById(R.id.changeprofile_text_bloodgroup)).getSelectedItem().toString().trim();
@@ -189,6 +205,7 @@ public class ChangeProfile extends AppCompatActivity {
         return true;
     }
 
+    //code for settig up new passport
     private void setPassword(){
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -209,7 +226,7 @@ public class ChangeProfile extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Log.w("newTag", "User password updated.");
+                                                    Log.w("newTag223", "User password updated.");
                                                 }
                                             }
                                         });
