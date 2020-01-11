@@ -19,6 +19,7 @@ import java.util.Collections;
 
 public class EnlistedPeople extends AppCompatActivity {
 
+    //variable declaration
     public String postId;
     public ArrayList<String> name = new ArrayList<>();
     public ArrayList<String> uid = new ArrayList<>();
@@ -30,6 +31,7 @@ public class EnlistedPeople extends AppCompatActivity {
         setContentView(R.layout.activity_enlisted_people);
         postId = getIntent().getStringExtra("postId");
 
+        //connect to database
         FirebaseDatabase.getInstance().getReference("post/list/" + postId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -44,6 +46,7 @@ public class EnlistedPeople extends AppCompatActivity {
                     number.add(notiBlock.cellNo);
                     postIds.add(notiBlock.postId);
                 }
+                //sort arraylist in reverse order
                 Collections.reverse(name);
                 Collections.reverse(uid);
                 Collections.reverse(number);
@@ -58,7 +61,7 @@ public class EnlistedPeople extends AppCompatActivity {
 
 
     }
-
+    // initiate recycler view
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recyclerviewenlistedpeople);

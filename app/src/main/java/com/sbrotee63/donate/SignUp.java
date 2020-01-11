@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
+    //declare variables
     String name;
     String email;
     String password;
@@ -35,7 +36,7 @@ public class SignUp extends AppCompatActivity {
     String lastBloodDonation;
 
 
-
+    //variables for datepicker dialogue
     DatePickerDialog datePickerDialog;
     DatePicker datePicker;
 
@@ -48,11 +49,13 @@ public class SignUp extends AppCompatActivity {
 
         findViewById(R.id.signup_button_signup).setOnClickListener(new View.OnClickListener() {
             @Override
+            // click this to sign up
             public void onClick(View view) {
                 signUp();
             }
         });
 
+        // code for dte picker dialogue
         findViewById(R.id.signup_button_dateofbirth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +95,7 @@ public class SignUp extends AppCompatActivity {
 
             }
         });
-
+        //code for drop down list
         Spinner mySpinner = (Spinner)findViewById(R.id.signup_text_bloodgroup);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SignUp.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bloodGroups));
 
@@ -102,6 +105,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void signUp(){
+        // checks if all fields are filled
         if(!allFieldChecked()) return;
         String email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
         String password = ((EditText)findViewById(R.id.signup_password_password)).getText().toString().trim();
@@ -110,7 +114,7 @@ public class SignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task <AuthResult> task)
             {
                 if(task.isSuccessful()){
-
+                    // send verification message to email
                     FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -139,6 +143,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+    //checks if any fiels is empty
     private Boolean allFieldChecked(){
         name = ((EditText)findViewById(R.id.signup_text_name)).getText().toString().trim();
         email = ((EditText)findViewById(R.id.signup_text_email)).getText().toString().trim();
@@ -172,6 +177,8 @@ public class SignUp extends AppCompatActivity {
     }
 
     void clear(){
+
+        //clear all fields
         ((EditText)findViewById(R.id.signup_text_name)).setText("");
         ((EditText)findViewById(R.id.signup_text_email)).setText("");
         ((EditText)findViewById(R.id.signup_password_password)).setText("");

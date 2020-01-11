@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class HospitalAndBloodBank extends AppCompatActivity {
 
 
+    //varriable declaration
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> locations = new ArrayList<>();
     ArrayList<String> numbers = new ArrayList<>();
@@ -28,6 +29,8 @@ public class HospitalAndBloodBank extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+       // attaching listener to activities
         setContentView(R.layout.activity_hospital_and_blood_bank);
 
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
@@ -70,6 +73,8 @@ public class HospitalAndBloodBank extends AppCompatActivity {
             }
         });
 
+        //fetching info from firebase and initiating  RecyclerView
+
         FirebaseDatabase.getInstance().getReference("bloodBank/bloodBanks/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -92,6 +97,8 @@ public class HospitalAndBloodBank extends AppCompatActivity {
         });
 
     }
+
+    //initiating recycler view
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recyclerviewhobb);

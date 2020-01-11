@@ -35,7 +35,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-
+        //ataching listener to buttons
         Button settingsButton = (Button) findViewById(R.id.feed_button_settings);
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class Profile extends AppCompatActivity {
         });
 
 
-
+        //fetch current user details from firebase
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -130,6 +130,7 @@ public class Profile extends AppCompatActivity {
         });
     }
 
+    //set user info to related fields
     void setup(User user){
         ((TextInputEditText) findViewById(R.id.profile_name)).setText(user.name);
         ((TextInputEditText) findViewById(R.id.profile_email)).setText(user.email);
