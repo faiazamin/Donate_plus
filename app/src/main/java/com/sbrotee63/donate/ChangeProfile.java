@@ -25,6 +25,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 
 public class ChangeProfile extends AppCompatActivity {
@@ -97,6 +98,17 @@ public class ChangeProfile extends AppCompatActivity {
 
                 if(allFieldChecked()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    name=((TextInputEditText) findViewById(R.id.changeprofile_text_name)).getText().toString();
+                    email=((TextInputEditText) findViewById(R.id.changeprofile_text_email)).getText().toString();
+                    dateOfBirth=((TextInputEditText) findViewById(R.id.changeprofile_text_dateofbirth)).getText().toString();
+                    address=((TextInputEditText) findViewById(R.id.changeprofile_text_address)).getText().toString();
+                    cellNumber=((TextInputEditText) findViewById(R.id.changeprofile_text_cellnumber)).getText().toString();
+                    lastBloodDonation=((TextInputEditText) findViewById(R.id.changeprofile_text_lastblooddonation)).getText().toString();
+                    bloodGroup=((Spinner)findViewById(R.id.changeprofile_text_bloodgroup)).getSelectedItem().toString().trim();
+
+                    //Log.d("newTag",address);
+                    //Log.d("newTag",name);
 
                     User newUser = new User(name, email, bloodGroup, dateOfBirth, address, cellNumber, lastBloodDonation);
                     FirebaseDatabase.getInstance().getReference("user/info/" + user.getUid()).setValue(newUser);
@@ -175,12 +187,18 @@ public class ChangeProfile extends AppCompatActivity {
     // function for setting up user in formaton to their respctive field
     void setup(User user){
         ((TextInputEditText) findViewById(R.id.changeprofile_text_name)).setText(user.name);
+        Log.d("newTag",user.email);
+
         ((TextInputEditText) findViewById(R.id.changeprofile_text_email)).setText(user.email);
         ((Spinner)findViewById(R.id.changeprofile_text_bloodgroup)).getSelectedItem().toString().trim();
         ((TextInputEditText) findViewById(R.id.changeprofile_text_dateofbirth)).setText(user.dateOfBirth);
         ((TextInputEditText) findViewById(R.id.changeprofile_text_address)).setText(user.address);
         ((TextInputEditText) findViewById(R.id.changeprofile_text_cellnumber)).setText(user.cellNo);
         ((TextInputEditText) findViewById(R.id.changeprofile_text_lastblooddonation)).setText(user.lastBloodDonation);
+
+
+
+
     }
 
      // checks is al fields are present
@@ -205,9 +223,11 @@ public class ChangeProfile extends AppCompatActivity {
         return true;
     }
 
-    //code for settig up new passport
+    //code for setting up new passport
     private void setPassword(){
-
+        if(currentPassword.equals("")) {
+            return;
+        }
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         AuthCredential credential = EmailAuthProvider
                 .getCredential(email, currentPassword);

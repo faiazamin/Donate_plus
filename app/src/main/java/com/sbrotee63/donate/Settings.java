@@ -68,7 +68,6 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Settings.this, ChangeProfile.class);
                 startActivity(intent);
-                Toast.makeText(Settings.this, "Logged out", Toast.LENGTH_LONG).show();
             }
         });
 
